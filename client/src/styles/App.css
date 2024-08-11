@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #ffd44c;
+  --secondary-color: #00034d;
+  --third-color: #f165d2;
+  --fourth-color: #f4f4f4;
+  --fifth-color: #252323;
+  --primary-font: "Sedgwick Ave display", sans-serif;
+  --secondary-font: "Atkinson Hyperlegible", sans-serif;
+
+  --color-modal-logout: #155724;
+  --background-modal-logout: #d4edda;
+  --border-modal-logout: #c3e6cb;
+  --color-loader: #124403;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--secondary-font);
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--fourth-color);
+}
+
+img {
+  width: 100%;
+}
