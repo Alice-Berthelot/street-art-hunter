@@ -42,13 +42,13 @@ function NavBar() {
     setTimeout(() => {
       setLogoutMessage("");
       setShowLoader(false);
-      navigate("/home");
+      navigate("/");
     }, 5000);
   };
 
   return (
     <nav className="navbar">
-      <Link to="/home">
+      <Link to="/">
         <img
           src={logoIcon}
           alt="Logo PixHunt redirigeant vers la page d'accueil"
@@ -57,14 +57,12 @@ function NavBar() {
       </Link>
       <ul className="navLists">
         <li className="navList">
-          <NavLink className="navlink" to="/home">
-            <figure
-              className={selectedPage === "/home" && "figure-navbar-active"}
-            >
+          <NavLink className="navlink" to="/">
+            <figure className={selectedPage === "/" && "figure-navbar-active"}>
               <img src={homeIcon} alt="Accueil" className="icon-navbar" />
               <figcaption
                 className={
-                  selectedPage === "/home"
+                  selectedPage === "/"
                     ? "figcaption-navbar-active"
                     : "figcaption-navbar-normal"
                 }
@@ -158,7 +156,7 @@ function NavBar() {
         {auth?.id && (
           <li className="navList loginNav-disconnect">
             <NavLink
-              to="/home"
+              to="/"
               onClick={handleLogout}
               className="figcaption-navbar-active"
             >

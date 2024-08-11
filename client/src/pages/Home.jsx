@@ -84,7 +84,7 @@ function Home() {
     return undefined;
   }, [showModal]);
 
-  const isHomepage = location.pathname === "/home";
+  const isHomepage = location.pathname === "/";
 
   return (
     <>

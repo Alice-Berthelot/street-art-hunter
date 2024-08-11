@@ -15,14 +15,14 @@ function LogoutMobile() {
 
     setTimeout(() => {
       setShowModal(false);
-      window.location.href = "/home";
+      window.location.href = "/";
     }, 5000);
   };
 
   return (
     <>
       {auth?.id && (
-        <Link to="/home" onClick={handleLogout}>
+        <Link to="/" onClick={handleLogout}>
           <img
             src={logoutIcon}
             alt="logo pour la déconnexion"

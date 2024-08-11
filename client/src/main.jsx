@@ -45,10 +45,6 @@ import ThankYouPage from "./pages/ThankYouPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <BeforeHome />,
-  },
-  {
     element: <App />,
     loader: async () => {
       const [users, pictures] = await Promise.all([
@@ -59,7 +55,7 @@ const router = createBrowserRouter([
     },
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
         loader: () => fetchApi(baseAcceptedArtUrl),
       },
@@ -95,7 +91,7 @@ const router = createBrowserRouter([
             "POST"
           );
           if (response.status === 201) {
-            return redirect("/home");
+            return redirect("/");
           }
           return null;
         },
@@ -159,7 +155,7 @@ const router = createBrowserRouter([
 
             const authData = await response.json();
             localStorage.setItem("token", authData.token);
-            return redirect("/home");
+            return redirect("/");
           } catch (error) {
             return {
               error: " Veuillez vérifier les informations saisies",
@@ -189,7 +185,7 @@ const router = createBrowserRouter([
               method: "DELETE",
             }
           );
-          return redirect("/home");
+          return redirect("/");
         },
         children: [
           {
