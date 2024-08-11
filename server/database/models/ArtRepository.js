@@ -7,14 +7,31 @@ class ArtRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=art.id`
+      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id`
     );
     return rows;
   }
 
   async readAccepted() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=art.id WHERE ${this.table}.status = 'accepted'`
+      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id WHERE ${this.table}.status = 'accepted'`
+    );
+    return rows;
+  }
+
+  async read(id) {
+    const [rows] = await this.database.query(
+      `SELECT ${this.table}.id as art_id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, 
+p.image, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id LEFT JOIN creating as c on c.art_id=${this.table}.id LEFT JOIN artist as a on a.id=c.artist_id WHERE p.user_id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async readComparedArts() {
+    const [rows] = await this.database.query(
+      `SELECT ${this.table}.*, p.id as picture_id, p.image, u.username, a.name as artist_name FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id JOIN user as u ON p.user_id = u.id LEFT JOIN 
+      creating as c ON c.art_id = ${this.table}.id LEFT JOIN artist as a ON a.id = c.artist_id WHERE ${this.table}.status != 'refused'`
     );
     return rows;
   }
@@ -33,14 +50,6 @@ class ArtRepository extends AbstractRepository {
     );
 
     return result.insertId;
-  }
-
-  async readComparedArts() {
-    const [rows] = await this.database.query(
-      `SELECT ${this.table}.*, p.id as picture_id, p.image, u.username, a.name as artist_name FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id JOIN user as u ON p.user_id = u.id LEFT JOIN 
-      creating as c ON c.art_id = ${this.table}.id LEFT JOIN artist as a ON a.id = c.artist_id WHERE ${this.table}.status != 'refused'`
-    );
-    return rows;
   }
 
   async update(art, id) {

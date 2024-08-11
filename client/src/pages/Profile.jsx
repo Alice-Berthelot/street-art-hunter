@@ -9,16 +9,15 @@ import ProfileContributions from "../components/ProfileContributions";
 
 function Profile() {
   const { auth } = useContext(CurrentUserContext);
-  const { sortedUsers, userData, pictureData } = useLoaderData();
-  const [isOpen, setIsOpen] = useState(false);
+  const { sortedUsers, userData, artData } = useLoaderData();
+  const [isOpenDeletion, setIsOpenDeletion] = useState(false);
+  const [isOpenContribution, setIsOpenContribution] = useState(false);
+  const [selectedArt, setSelectedArt] = useState(null);
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsOpen(false);
-  };
+  const handleOpenDeletion = () => setIsOpenDeletion(true);
+  const handleCloseDeletion = () => setIsOpenDeletion(false);
+  const handleOpenContribution = () => setIsOpenContribution(true);
+  const handleCloseContribution = () => setIsOpenContribution(false);
 
   return (
     <section className="profile-section-wrapper">
@@ -38,7 +37,7 @@ function Profile() {
                 type="submit"
                 aria-label="Supprimer le profil"
                 className="profile-delete-button"
-                onClick={handleOpenModal}
+                onClick={handleOpenDeletion}
               >
                 Supprimer mon profil
               </button>
@@ -46,9 +45,22 @@ function Profile() {
           </article>
           <ProfilePoints user={userData} sortedUsers={sortedUsers} />
         </section>
-        {isOpen && <ProfileDelete user={userData} onClose={handleCloseModal} />}
+        {isOpenDeletion && (
+          <ProfileDelete
+            user={userData}
+            isOpen={isOpenDeletion}
+            handleClose={handleCloseDeletion}
+          />
+        )}
 
-        <ProfileContributions pictureData={pictureData} />
+        <ProfileContributions
+          arts={artData}
+          selectedArt={selectedArt}
+          setSelectedArt={setSelectedArt}
+          isOpen={isOpenContribution}
+          handleOpenModal={handleOpenContribution}
+          handleCloseModal={handleCloseContribution}
+        />
       </article>
     </section>
   );

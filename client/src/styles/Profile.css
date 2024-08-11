@@ -192,7 +192,8 @@
   color: var(--third-color);
 }
 
-.modal-delete-profile {
+.modal-delete-profile,
+.modal-contribution-profile {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -207,12 +208,19 @@
   z-index: 3;
 }
 
-.modal-delete-profile > header {
+.modal-delete-profile::backdrop,
+.modal-contribution-profile::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-delete-profile > header,
+.modal-contribution-profile > header {
   display: flex;
   justify-content: flex-end;
 }
 
-.close-delete-profile {
+.close-delete-profile,
+.close-contribution-profile {
   font-family: var(--primary-font);
   font-size: 1.5rem;
   color: var(--secondary-color);
@@ -223,13 +231,23 @@
 }
 
 .close-delete-profile:hover,
-.close-delete-profile:focus {
+.close-contribution-profile:hover {
   color: var(--third-color);
   cursor: pointer;
 }
 
-.modal-content-delete-profile {
+.modal-content-delete-profile,
+.modal-content-contribution-profile {
   text-align: center;
+}
+
+.modal-content-contribution-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
 }
 
 .hand-icon-delete-profile {
@@ -278,6 +296,7 @@
   height: 8rem;
   display: block;
   margin: auto;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -301,7 +320,8 @@
     align-items: center;
   }
 
-  .modal-delete-profile {
+  .modal-delete-profile,
+  .modal-contribution-profile {
     width: 60%;
   }
 

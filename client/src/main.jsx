@@ -6,7 +6,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import BeforeHome from "./pages/BeforeHome";
 import App from "./App";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -171,12 +170,14 @@ const router = createBrowserRouter([
           </AuthProtected>
         ),
         loader: async ({ params }) => {
-          const [sortedUsers, userData, pictureData] = await Promise.all([
-            fetchApi(`${baseUserUrl}rank`),
-            fetchApi(`${baseUserUrl}/${params.id}`),
-            fetchApi(`${basePictureUrl}/${params.id}`),
-          ]);
-          return { sortedUsers, userData, pictureData };
+          const [sortedUsers, userData, artData, pictureData] =
+            await Promise.all([
+              fetchApi(`${baseUserUrl}rank`),
+              fetchApi(`${baseUserUrl}/${params.id}`),
+              fetchApi(`${baseArtUrl}/${params.id}`),
+              fetchApi(`${basePictureUrl}/${params.id}`),
+            ]);
+          return { sortedUsers, userData, artData, pictureData };
         },
         action: async ({ params }) => {
           await fetch(

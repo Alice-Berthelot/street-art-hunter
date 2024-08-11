@@ -21,15 +21,6 @@ function StreetArtList({ images, pictures }) {
               />
             </li>
           ))}
-          {images.map((image, index) => (
-            <li key={image.id} className={`img${index + 1}`}>
-              <img
-                className={`image${index + 1}`}
-                src={image.src}
-                alt={`oeuvre d'art ${index + 1}`}
-              />
-            </li>
-          ))}
         </ul>
       </article>
     </section>
@@ -37,12 +28,6 @@ function StreetArtList({ images, pictures }) {
 }
 
 StreetArtList.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      src: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   pictures: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

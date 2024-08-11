@@ -1,12 +1,21 @@
 import { PropTypes } from "prop-types";
 import { Form, useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { TfiHandStop } from "react-icons/tfi";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
-function ProfileDelete({ onClose }) {
+function ProfileDelete({ isOpen, handleClose }) {
   const { id } = useParams();
   const { auth, logout } = useContext(CurrentUserContext);
+  const dialog = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      dialog.current?.showModal();
+    } else {
+      dialog.current?.close();
+    }
+  }, [isOpen]);
 
   const handleSubmit = () => {
     if (auth.role !== 1 || (auth.role === 1 && auth.id === parseInt(id, 10))) {
@@ -15,12 +24,12 @@ function ProfileDelete({ onClose }) {
   };
 
   return (
-    <dialog className="modal-delete-profile" open>
+    <dialog className="modal-delete-profile" ref={dialog}>
       <header>
         <button
           type="button"
           aria-label="Fermer la fenêtre"
-          onClick={onClose}
+          onClick={handleClose}
           className="close-delete-profile"
         >
           X
@@ -46,7 +55,7 @@ function ProfileDelete({ onClose }) {
         <button
           type="button"
           aria-label="Fermer la fenêtre"
-          onClick={onClose}
+          onClick={handleClose}
           className="cancel-delete-profile"
         >
           Annuler

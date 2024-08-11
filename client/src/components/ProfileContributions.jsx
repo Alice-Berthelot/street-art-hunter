@@ -1,8 +1,16 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import PropTypes from "prop-types";
+import ContributionDetails from "./ContributionDetails";
 
-function ProfileContributions({ pictureData }) {
+function ProfileContributions({
+  arts,
+  selectedArt,
+  setSelectedArt,
+  isOpen,
+  handleOpenModal,
+  handleCloseModal,
+}) {
   const pictureUrl = import.meta.env.VITE_API_URL;
 
   return (
@@ -24,30 +32,53 @@ function ProfileContributions({ pictureData }) {
           pagination: false,
         }}
       >
-        {pictureData.map((picture) => (
-          <SplideSlide key={picture}>
-            <img
-              src={`${pictureUrl}${picture.image}`}
-              alt={`added by ${picture.user_id}`}
-              className="profile-added-image"
-            />
+        {arts.map((art) => (
+          <SplideSlide key={art.id}>
+            <figure
+              onClick={() => {
+                setSelectedArt(art);
+                handleOpenModal();
+              }}
+            >
+              <img
+                src={`${pictureUrl}${art.image}`}
+                alt={`Street art added by ${art.user_id}`}
+                className="profile-added-image"
+              />
+            </figure>
           </SplideSlide>
         ))}
       </Splide>
+      {isOpen && selectedArt && (
+        <ContributionDetails
+          art={selectedArt}
+          isOpen={isOpen}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
     </section>
   );
 }
 
 ProfileContributions.propTypes = {
-  pictureData: PropTypes.arrayOf(
+  arts: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      artist: PropTypes.string,
+      information: PropTypes.string,
     })
-  ),
+  ).isRequired,
+  selectedArt: PropTypes.object,
+  setSelectedArt: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  handleOpenModal: PropTypes.func.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
 };
 
 ProfileContributions.defaultProps = {
-  pictureData: [],
+  selectedArt: null,
 };
 
 export default ProfileContributions;

@@ -36,6 +36,18 @@ const browseComparedArts = async (req, res, next) => {
   }
 };
 
+const read = async (req, res, next) => {
+  try {
+    const art = await tables.art.read(req.params.id);
+    if (art == null) {
+      res.sendStatus(404);
+    }
+    res.json(art);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const edit = async (req, res, next) => {
   const art = req.body;
   try {
@@ -51,5 +63,6 @@ module.exports = {
   browseAccepted,
   count,
   browseComparedArts,
+  read,
   edit,
 };

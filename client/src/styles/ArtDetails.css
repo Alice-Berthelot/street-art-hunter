@@ -28,8 +28,7 @@
   margin: 1rem 0;
 }
 
-.close-artDetails:hover,
-.close-artDetails:focus {
+.close-artDetails:hover {
   color: var(--third-color);
   cursor: pointer;
 }
