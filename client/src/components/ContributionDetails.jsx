@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import "../styles/Profile.css";
 
-function ContributionDetails({ art, isOpen, handleCloseModal }) {
+function ContributionDetails({ art, isOpen, handleCloseModal, translations }) {
   const artUrl = import.meta.env.VITE_API_URL;
-  const imagePath = `${artUrl}${art.image}`;
+  const imagePath = `${artUrl}/${art.image}`;
   const dialog = useRef();
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function ContributionDetails({ art, isOpen, handleCloseModal }) {
         </button>
       </header>
       <article className="modal-content-contribution-profile">
+        <p>Statut : {translations[art.status]}</p>
         <img
           src={imagePath}
           alt={art.title}

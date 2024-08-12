@@ -1,12 +1,14 @@
 import { Form, Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
-function ProfileForm({ user }) {
+function ProfileForm({ user, auth, id }) {
   return (
     <section className="profile-section-wrapper">
       <article className="profile-article">
         <section className="profile-information-edit-section">
-          <h2 className="profile-main-titles">Modifier mes informations</h2>
+          <h2 className="profile-main-titles">
+            Modifier {auth?.id === parseInt(id) ? "mes" : "les"} informations
+          </h2>
           <Form method="PUT" className="profile-information-form">
             <article className="profile-information-edit-article">
               <label htmlFor="username">Pseudo</label>

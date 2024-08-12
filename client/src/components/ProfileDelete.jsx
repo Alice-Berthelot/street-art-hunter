@@ -4,9 +4,7 @@ import { useContext, useEffect, useRef } from "react";
 import { TfiHandStop } from "react-icons/tfi";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
-function ProfileDelete({ isOpen, handleClose }) {
-  const { id } = useParams();
-  const { auth, logout } = useContext(CurrentUserContext);
+function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
   const dialog = useRef();
 
   useEffect(() => {

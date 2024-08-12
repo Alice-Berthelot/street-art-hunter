@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 import "../styles/Profile.css";
 
-function ProfilePoints({ sortedUsers, user }) {
+function ProfilePoints({ sortedUsers, user, auth, id }) {
   const userRank =
     1 + sortedUsers.findIndex((sortedUser) => sortedUser.id === user.id);
 
   return (
     <section className="profile-points-section">
-      <h2 className="profile-points-title">Mes points</h2>
+      <h2 className="profile-points-title">
+        {auth?.id === parseInt(id) ? "Mes points" : "Points"}
+      </h2>
       <article className="profile-points-article">
         <p>Nombre de points :</p>
         <p>{user.point_number}</p>

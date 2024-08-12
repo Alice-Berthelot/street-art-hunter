@@ -4,18 +4,23 @@ import PropTypes from "prop-types";
 import ContributionDetails from "./ContributionDetails";
 
 function ProfileContributions({
+  auth,
+  id,
   arts,
   selectedArt,
   setSelectedArt,
   isOpen,
   handleOpenModal,
   handleCloseModal,
+  translations,
 }) {
   const pictureUrl = import.meta.env.VITE_API_URL;
 
   return (
     <section className="profile-contributions-section">
-      <h2 className="profile-main-titles">Mes contributions</h2>
+      <h2 className="profile-main-titles">
+        {auth?.id === parseInt(id) ? "Mes contributions" : "Contributions"}
+      </h2>
       <Splide
         options={{
           type: "slide",
@@ -41,8 +46,8 @@ function ProfileContributions({
               }}
             >
               <img
-                src={`${pictureUrl}${art.image}`}
-                alt={`Street art added by ${art.user_id}`}
+                src={`${pictureUrl}/${art.image}`}
+                alt={`Street art`}
                 className="profile-added-image"
               />
             </figure>
@@ -54,6 +59,7 @@ function ProfileContributions({
           art={selectedArt}
           isOpen={isOpen}
           handleCloseModal={handleCloseModal}
+          translations={translations}
         />
       )}
     </section>

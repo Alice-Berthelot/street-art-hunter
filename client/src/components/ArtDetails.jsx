@@ -1,16 +1,27 @@
+import { useEffect, useRef } from "react";
 import "../styles/ArtDetails.css";
 import { PropTypes } from "prop-types";
 
-function ArtDetails({ art, onClose }) {
+function ArtDetails({ art, isOpen, handleCloseModal }) {
   const artUrl = import.meta.env.VITE_API_URL;
-  const imagePath = `${artUrl}${art.image}`;
+  const imagePath = `${artUrl}/${art.image}`;
+  const dialog = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      dialog.current?.showModal();
+    } else {
+      dialog.current?.close();
+    }
+  }, [isOpen]);
+
   return (
-    <dialog className="modal-artDetails" open>
+    <dialog className="modal-artDetails" ref={dialog}>
       <header>
         <button
           type="button"
           aria-label="Fermer la fenêtre"
-          onClick={onClose}
+          onClick={handleCloseModal}
           className="close-artDetails"
         >
           X

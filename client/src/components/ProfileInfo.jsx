@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import "../styles/Profile.css";
 
-function ProfileInfo({ user }) {
+function ProfileInfo({ user, auth, id }) {
   return (
     <section className="profile-information-section">
-      <h2 className="profile-main-titles">Mes informations</h2>
+      <h2 className="profile-main-titles">
+        {auth?.id === parseInt(id) ? "Mes informations" : "Informations"}
+      </h2>
       <article className="profile-information-article">
         <p>Pseudo</p>
         <p>{user.username}</p>
