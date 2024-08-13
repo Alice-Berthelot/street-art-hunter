@@ -1,10 +1,12 @@
 const AbstractRepository = require("./AbstractRepository");
 const PictureRepository = require("./PictureRepository");
+const ArtRepository = require("./ArtRepository");
 
 class UserRepository extends AbstractRepository {
   constructor() {
     super({ table: "user" });
     this.pictureRepository = new PictureRepository();
+    this.artRepository = new ArtRepository();
   }
 
   async create(user) {

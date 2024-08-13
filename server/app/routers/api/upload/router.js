@@ -2,7 +2,7 @@ const express = require("express");
 
 const multer = require("multer");
 
-const upload = multer({ dest: "public/tmp/" });
+const upload = multer({ dest: "public/assets/images/upload/" });
 
 const router = express.Router();
 

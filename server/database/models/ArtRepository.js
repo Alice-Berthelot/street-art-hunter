@@ -21,8 +21,7 @@ class ArtRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id as art_id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, 
-p.image, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id LEFT JOIN creating as c on c.art_id=${this.table}.id LEFT JOIN artist as a on a.id=c.artist_id WHERE p.user_id = ?`,
+      `SELECT ${this.table}.*, p.image, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id LEFT JOIN creating as c on c.art_id=${this.table}.id LEFT JOIN artist as a on a.id=c.artist_id WHERE p.user_id = ?`,
       [id]
     );
     return rows;
@@ -56,6 +55,14 @@ p.image, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${thi
     const [result] = await this.database.query(
       `update ${this.table} set status = ? where id = ?`,
       [art.status, id]
+    );
+    return result.affectedRows;
+  }
+
+  async deleteByUserId(userId) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} LEFT JOIN picture as p on p.art_id=${this.table}.id WHERE p.user_id = ?`,
+      [userId]
     );
     return result.affectedRows;
   }

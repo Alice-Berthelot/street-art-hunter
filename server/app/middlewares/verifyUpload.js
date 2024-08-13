@@ -11,13 +11,13 @@ const handleFileUpload = (req, res, next) => {
       return next(err);
     }
 
-    req.newPath = `/assets/images/upload/${newFileName}`;
+    req.newPath = `${newFileName}`;
 
     req.latitude = req.body.latitude;
     req.longitude = req.body.longitude;
 
     next();
-    return true;
+    return true; // peut-être supprimer ce code
   });
 };
 

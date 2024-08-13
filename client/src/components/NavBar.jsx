@@ -51,8 +51,8 @@ function NavBar() {
       <Link to="/">
         <img
           src={logoIcon}
-          alt="Logo PixHunt redirigeant vers la page d'accueil"
-          className="logo"
+          alt="logo de l'application redirigeant vers la page d'accueil"
+          className="logo-navbar"
         />
       </Link>
       <ul className="navLists">

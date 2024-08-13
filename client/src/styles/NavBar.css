@@ -9,6 +9,7 @@
   background-color: var(--secondary-color);
   height: 4rem;
 }
+
 .logout-container {
   position: absolute;
   top: 0.625rem;
@@ -221,9 +222,9 @@
     padding-top: 0;
   }
 
-  .logo {
+  .logo-navbar {
     display: block;
-    width: 10rem;
+    width: 13rem;
     margin-left: 1rem;
     padding: 0.5rem;
   }
