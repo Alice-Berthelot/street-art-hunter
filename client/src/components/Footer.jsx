@@ -1,6 +1,6 @@
 import "../styles/Footer.css";
 import { Link, useLocation } from "react-router-dom";
-import logoIcon from "../assets/images/logoblue.png";
+import logo from "../assets/images/logoblue.png";
 
 function Footer() {
   const location = useLocation();
@@ -19,7 +19,7 @@ function Footer() {
         <p>La chasse au street art peut commencer !</p>
         <p>2024</p>
       </section>
-      <img src={logoIcon} alt="logo de l'application" className="footer-logo" />
+      <img src={logo} alt="logo de l'application" className="footer-logo" />
       <nav>
         <ul>
           <li>

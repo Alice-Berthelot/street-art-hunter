@@ -1,26 +1,27 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 import logoutIcon from "../assets/images/logout-icon.png";
-import "../styles/LogoLogoutMobile.css";
+import logoImg from "../assets/images/logo-small.png";
+import "../styles/HeaderMobile.css";
 
-function LogoutMobile() {
+function HeaderMobile() {
   const { auth, logout } = useContext(CurrentUserContext);
-  const [showModal, setShowModal] = useState(false);
 
   const handleLogout = (e) => {
     e.preventDefault();
     logout();
-    setShowModal(true);
-
-    setTimeout(() => {
-      setShowModal(false);
-      window.location.href = "/";
-    }, 5000);
   };
 
   return (
     <>
+      <Link to="/">
+        <img
+          src={logoImg}
+          alt="Logo pour retourner à l'accueil"
+          className="logo-mobile"
+        />
+      </Link>
       {auth?.id && (
         <Link to="/" onClick={handleLogout}>
           <img
@@ -30,15 +31,8 @@ function LogoutMobile() {
           />
         </Link>
       )}
-
-      {showModal && (
-        <dialog open className="logout-modal-mobile">
-          <p className="logout-message-mobile">Vous avez bien été déconnecté</p>
-          <span className="loader-mobile" />
-        </dialog>
-      )}
     </>
   );
 }
 
-export default LogoutMobile;
+export default HeaderMobile;

@@ -68,7 +68,7 @@ function Contact() {
   });
 
   const emailRegister = register("email", {
-    required: "Veuillez entrer une adresse mail valide",
+    required: "Veuillez entrer une adresse e-mail valide",
     pattern: {
       value:
         /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -86,7 +86,7 @@ function Contact() {
         <BtnGoBack />
         <section className="contact-section">
           <article>
-            <h2 className="contact-form-h2">Contact</h2>
+            <h1 className="contact-form-h2">Contact</h1>
             <form
               id="contact-form"
               ref={formRef}

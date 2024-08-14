@@ -40,7 +40,7 @@ import UserPage from "./pages/UserPage";
 import UserList from "./components/UserList";
 import Validation from "./pages/Validation";
 import ValidationDetails from "./pages/ValidationDetails";
-import ThankYouPage from "./pages/ThankYouPage";
+import Credits from "./pages/Credits";
 
 const router = createBrowserRouter([
   {
@@ -323,7 +323,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/credits",
-        element: <ThankYouPage />,
+        element: <Credits />,
       },
     ],
   },

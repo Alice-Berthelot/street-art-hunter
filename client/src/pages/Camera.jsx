@@ -52,96 +52,100 @@ function Camera() {
   }, [image]);
 
   return (
-    <Form
-      method="POST"
-      encType="multipart/form-data"
-      action="/camera"
-      className="camera-modal"
-    >
-      <section className="webcam-container">
-        {image ? (
-          <>
-            <img src={image} alt="Captured" className="captured-image" />
-            <input type="hidden" name="pictureTaken" value={image} />
-            <input type="hidden" name="userId" value={auth.id} />
-            <input type="hidden" name="latitude" value={latitude} />
-            <input type="hidden" name="longitude" value={longitude} />
-          </>
-        ) : (
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            className="webcam"
-            videoConstraints={{ facingMode }}
-          />
+    <>
+      <h1>Appareil photo</h1>
+      <p>Prenez en photo des oeuvres afin de gagner des points !</p>
+      <Form
+        method="POST"
+        encType="multipart/form-data"
+        action="/camera"
+        className="camera-modal"
+      >
+        <section className="webcam-container">
+          {image ? (
+            <>
+              <img src={image} alt="Captured" className="captured-image" />
+              <input type="hidden" name="pictureTaken" value={image} />
+              <input type="hidden" name="userId" value={auth.id} />
+              <input type="hidden" name="latitude" value={latitude} />
+              <input type="hidden" name="longitude" value={longitude} />
+            </>
+          ) : (
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              className="webcam"
+              videoConstraints={{ facingMode }}
+            />
+          )}
+        </section>
+        {image && (
+          <section className="info-section">
+            <p>Ajouter des informations complémentaires (facultatif)</p>
+            <label htmlFor="title">Titre</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label htmlFor="artist">Artiste</label>
+            <input
+              type="text"
+              name="artist"
+              id="artist"
+              value={artist}
+              onChange={(e) => setArtist(e.target.value)}
+            />
+            <label htmlFor="information">Description</label>
+            <textarea
+              name="information"
+              id="information"
+              rows="3"
+              value={information}
+              onChange={(e) => setInformation(e.target.value)}
+            />
+          </section>
         )}
-      </section>
-      {image && (
-        <section className="info-section">
-          <p>Ajouter des informations complémentaires (facultatif)</p>
-          <label htmlFor="title">Titre</label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label htmlFor="artist">Artiste</label>
-          <input
-            type="text"
-            name="artist"
-            id="artist"
-            value={artist}
-            onChange={(e) => setArtist(e.target.value)}
-          />
-          <label htmlFor="information">Description</label>
-          <textarea
-            name="information"
-            id="information"
-            rows="3"
-            value={information}
-            onChange={(e) => setInformation(e.target.value)}
-          />
-        </section>
-      )}
-      {!image ? (
-        <section className="initial-buttons">
-          <button
-            type="button"
-            aria-label="Changer de caméra"
-            className="switch-button"
-            onClick={handleSwitchCamera}
-          >
-            <MdCameraswitch className="switch-icon" />
-          </button>
-          <button
-            type="button"
-            aria-label="Prendre une photo"
-            className="camera-button"
-            onClick={capture}
-          />
-        </section>
-      ) : (
-        <section className="button-container">
-          <button
-            type="button"
-            className="button-retake-picture"
-            onClick={handleRetake}
-          >
-            Reprendre
-          </button>
-          <button
-            type="submit"
-            className="button-submit-picture"
-            disabled={!latitude || !longitude}
-          >
-            Soumettre
-          </button>
-        </section>
-      )}
-    </Form>
+        {!image ? (
+          <section className="initial-buttons">
+            <button
+              type="button"
+              aria-label="Changer de caméra"
+              className="switch-button"
+              onClick={handleSwitchCamera}
+            >
+              <MdCameraswitch className="switch-icon" />
+            </button>
+            <button
+              type="button"
+              aria-label="Prendre une photo"
+              className="camera-button"
+              onClick={capture}
+            />
+          </section>
+        ) : (
+          <section className="button-container">
+            <button
+              type="button"
+              className="button-retake-picture"
+              onClick={handleRetake}
+            >
+              Reprendre
+            </button>
+            <button
+              type="submit"
+              className="button-submit-picture"
+              disabled={!latitude || !longitude}
+            >
+              Soumettre
+            </button>
+          </section>
+        )}
+      </Form>
+    </>
   );
 }
 export default Camera;

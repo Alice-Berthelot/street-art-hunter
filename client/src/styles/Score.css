@@ -38,12 +38,7 @@
 }
 
 .score-main-title {
-  color: var(--third-color);
-  font-size: 2rem;
-  letter-spacing: 0.2rem;
-  text-align: center;
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .podium-top3 {
@@ -210,10 +205,6 @@
     margin-top: 5rem;
     border: none;
     border-radius: 0;
-  }
-
-  .score-main-title {
-    margin-bottom: 3rem;
   }
 
   .total-ranking-table {

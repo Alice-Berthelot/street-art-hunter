@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 import BtnGoBack from "../components/BtnGoBack";
-import DesktopBar from "../components/DesktopBar";
 import "../styles/Validation.css";
 
 function Validation() {
@@ -10,17 +9,10 @@ function Validation() {
 
   const artUrl = import.meta.env.VITE_API_URL;
 
-  const styleDesktopBarContent = "admin-links-bar";
-  const styleDesktopBarSection = "admin-links-bar-nav";
-
   return (
     <section className="validation-section-wrapper">
       <article className="validation-article">
         <BtnGoBack />
-        <DesktopBar
-          classNameBody={styleDesktopBarContent}
-          classNameNav={styleDesktopBarSection}
-        />
         <section className="validation-section">
           <h2 className="validation-main-titles">Ajouts à valider</h2>
           <figure>

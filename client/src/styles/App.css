@@ -6,11 +6,6 @@
   --fifth-color: #252323;
   --primary-font: "Sedgwick Ave display", sans-serif;
   --secondary-font: "Atkinson Hyperlegible", sans-serif;
-
-  --color-modal-logout: #155724;
-  --background-modal-logout: #d4edda;
-  --border-modal-logout: #c3e6cb;
-  --color-loader: #124403;
 }
 
 * {
@@ -28,4 +23,19 @@ body {
 
 img {
   width: 100%;
+}
+
+h1 {
+  color: var(--secondary-color);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  background-image: url("../assets/images/paint-trace.png");
+  background-position: left center;
+  background-size: 5rem 5rem;
+  background-repeat: no-repeat;
+  padding: 3rem 2.5rem;
+  width: 20rem;
+  margin: auto;
 }

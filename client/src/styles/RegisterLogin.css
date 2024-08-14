@@ -88,18 +88,28 @@
 }
 
 .registerAndLoginForm Form button {
-  margin-top: 0.5rem;
-  padding: 0.55rem;
-  width: 14rem;
+  width: 12rem;
+  height: 2.5rem;
+  border: none;
   border-radius: 0.65rem;
-  border: 0.5px solid var(--secondary-color);
   background-color: var(--secondary-color);
   color: var(--primary-color);
+  font-size: 1.2rem;
   font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.registerAndLoginForm Form button:active {
-  opacity: 0.85;
+.registerAndLoginForm Form button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  letter-spacing: 0.1rem;
 }
 
 .registerAndLoginForm Form p {

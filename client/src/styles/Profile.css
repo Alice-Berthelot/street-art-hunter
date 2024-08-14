@@ -24,6 +24,9 @@
   flex-direction: column;
   align-items: center;
   gap: 1.7rem;
+  border: 1px solid var(--fifth-color);
+  border-radius: 10px;
+  padding: 1.5rem 0.5rem 2rem 0.5rem;
 }
 
 .profile-contributions-section {
@@ -36,24 +39,12 @@
   margin: 1rem 1rem;
 }
 
-.link-admin-section {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.link-admin {
-  font-size: 1.2rem;
-  text-decoration: underline;
-  color: var(--fifth-color);
-  margin-right: 2rem;
-}
-
-.profile-main-titles {
-  color: var(--third-color);
-  font-size: 2rem;
-  letter-spacing: 0.2rem;
+.profile-subtitle {
+  color: var(--secondary-color);
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.8rem;
 }
 
 .profile-information-article,
@@ -65,7 +56,7 @@
   grid-template-rows: repeat(3, 1fr);
   grid-row-gap: 1rem;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .profile-information-article > p,
@@ -80,7 +71,6 @@
 
 .profile-information-article > p:nth-child(2n) {
   text-align: right;
-  font-size: 1.2rem;
 }
 
 .profile-information-article > p:nth-child(5) {
@@ -95,31 +85,45 @@
   margin: 3rem auto 3rem auto;
 }
 
-.profile-information-edit-button {
-  width: 15rem;
-  height: 3rem;
+.profile-information-edit-button,
+.confirm-delete-profile,
+.cancel-delete-profile {
+  width: 12rem;
+  height: 2.5rem;
   border: none;
   border-radius: 0.65rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  font-size: 1.375rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
   cursor: pointer;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.profile-information-edit-button:first-of-type {
+.profile-information-edit-button:hover,
+.confirm-delete-profile:hover,
+.cancel-delete-profile:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  letter-spacing: 0.1rem;
+}
+
+.profile-information-edit-button {
+  margin: 0 auto;
+}
+
+.profile-information-edit-section button:first-of-type {
   margin-bottom: 0.8rem;
 }
 
 .profile-delete-button-wrapper {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 0rem;
+  justify-content: flex-start;
 }
 
 .profile-delete-button {
@@ -129,7 +133,7 @@
   border: none;
   font-style: italic;
   font-size: 1rem;
-  margin: 0 2.5rem 2rem 0;
+  margin: 0 0rem 2rem 2.5rem;
   text-align: right;
   cursor: pointer;
 }
@@ -158,13 +162,6 @@
   border-radius: 0.625rem;
 }
 
-.profile-points-section > h2 {
-  color: var(--secondary-color);
-  text-align: center;
-  padding-bottom: 0.5rem;
-  font-size: 1.8rem;
-}
-
 .profile-points-article {
   background-color: var(--fourth-color);
   width: 90%;
@@ -183,13 +180,11 @@
   font-weight: 600;
 }
 
-.profile-points-article > p:nth-child(2n + 1) {
-  font-weight: 600;
-}
-
 .profile-points-article > p:nth-child(2n) {
   text-align: right;
   color: var(--third-color);
+  font-weight: 800;
+  font-size: 1.3rem;
 }
 
 .modal-delete-profile,
@@ -274,21 +269,7 @@
 
 .confirm-delete-profile,
 .cancel-delete-profile {
-  width: 15rem;
-  height: 3rem;
-  border: none;
-  border-radius: 0.65rem;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  font-size: 1.375rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
 }
 
 .profile-added-image {
@@ -343,8 +324,9 @@
     margin-top: 2rem;
   }
 
-  .link-admin-section {
-    align-self: flex-end;
-    margin-right: 4.5rem;
+  .profile-information-form > article:last-of-type {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
   }
 }

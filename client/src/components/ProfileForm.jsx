@@ -5,8 +5,13 @@ function ProfileForm({ user, auth, id }) {
   return (
     <section className="profile-section-wrapper">
       <article className="profile-article">
+        <h1>
+          {auth?.id === parseInt(id)
+            ? "MON PROFIL"
+            : `PROFIL DE ${userData.username.toUpperCase()}`}
+        </h1>
         <section className="profile-information-edit-section">
-          <h2 className="profile-main-titles">
+          <h2 className="profile-subtitle">
             Modifier {auth?.id === parseInt(id) ? "mes" : "les"} informations
           </h2>
           <Form method="PUT" className="profile-information-form">

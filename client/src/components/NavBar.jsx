@@ -7,7 +7,7 @@ import homeIcon from "../assets/images/home.svg";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 import profileIcon from "../assets/images/profile.svg";
 import trophyIcon from "../assets/images/trophy.svg";
-import logoIcon from "../assets/images/logo.png";
+import logo from "../assets/images/logo.png";
 import menuBurger from "../assets/images/menuBurger.svg";
 import menuCross from "../assets/images/menuCross.svg";
 
@@ -16,8 +16,6 @@ defineElement(lottie.loadAnimation);
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuBurgerIcon, setMenuBurgerIcon] = useState(menuBurger);
-  const [logoutMessage, setLogoutMessage] = useState("");
-  const [showLoader, setShowLoader] = useState(false);
 
   const { auth, logout } = useContext(CurrentUserContext);
   const location = useLocation();
@@ -36,27 +34,19 @@ function NavBar() {
 
   const handleLogout = () => {
     logout();
-    setLogoutMessage("Vous avez bien été déconnecté");
-    setShowLoader(true);
-
-    setTimeout(() => {
-      setLogoutMessage("");
-      setShowLoader(false);
-      navigate("/");
-    }, 5000);
   };
 
   return (
     <nav className="navbar">
       <Link to="/">
         <img
-          src={logoIcon}
+          src={logo}
           alt="logo de l'application redirigeant vers la page d'accueil"
-          className="logo-navbar"
+          className="navbar-logo"
         />
       </Link>
-      <ul className="navLists">
-        <li className="navList">
+      <ul>
+        <li>
           <NavLink className="navlink" to="/">
             <figure className={selectedPage === "/" && "figure-navbar-active"}>
               <img src={homeIcon} alt="Accueil" className="icon-navbar" />
@@ -72,7 +62,7 @@ function NavBar() {
             </figure>
           </NavLink>
         </li>
-        <li className="navList">
+        <li>
           <NavLink className="navlink" to="/score">
             <figure
               className={selectedPage === "/score" && "figure-navbar-active"}
@@ -94,11 +84,11 @@ function NavBar() {
             </figure>
           </NavLink>
         </li>
-        <li className="navList">
+        <li className="navbar-camera-list">
           <button
             type="button"
             aria-label="Appareil photo"
-            className=" active camera-icon"
+            className="camera-icon"
             onClick={handleCameraClick}
           >
             <lord-icon
@@ -112,7 +102,7 @@ function NavBar() {
             />
           </button>
         </li>
-        <li className="navList">
+        <li>
           <NavLink
             className="navlink"
             to={auth?.id ? `/profile/${auth?.id}` : "/login"}
@@ -121,8 +111,7 @@ function NavBar() {
               className={
                 (selectedPage === `/profile/${auth?.id}` ||
                   selectedPage === `/profile/${auth?.id}/edit` ||
-                  selectedPage === "/login" ||
-                  selectedPage === "/admin") &&
+                  selectedPage === "/login") &&
                 "figure-navbar-active"
               }
             >
@@ -135,36 +124,49 @@ function NavBar() {
                 className={
                   selectedPage === `/profile/${auth?.id}` ||
                   selectedPage === `/profile/${auth?.id}/edit` ||
-                  selectedPage === "/login" ||
-                  selectedPage === "/admin"
+                  selectedPage === "/login"
                     ? "figcaption-navbar-active"
                     : "figcaption-navbar-normal"
                 }
               >
-                {auth?.id ? "Mon profil" : "Se connecter"}
+                {auth?.id ? "Profil" : "Connexion"}
               </figcaption>
             </figure>
           </NavLink>
         </li>
         {!auth?.id && (
-          <li className="navList nav-inscription">
+          <li className="nav-inscription">
             <NavLink className="navlink" to="/register">
               Inscription
             </NavLink>
           </li>
         )}
+        {auth?.role === 1 && (
+          <li>
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                isActive
+                  ? "figcaption-navbar-active"
+                  : "figcaption-navbar-normal"
+              }
+            >
+              Administration
+            </NavLink>
+          </li>
+        )}
         {auth?.id && (
-          <li className="navList loginNav-disconnect">
+          <li className="navbar-logout-list">
             <NavLink
               to="/"
               onClick={handleLogout}
-              className="figcaption-navbar-active"
+              className="figcaption-navbar-normal"
             >
               Se déconnecter
             </NavLink>
           </li>
         )}
-        <li className="navList">
+        <li>
           <button
             type="button"
             className="btnMenuBurger"
@@ -172,7 +174,7 @@ function NavBar() {
           >
             <img
               src={menuBurgerIcon}
-              alt="Ouverture d'un menu contenant des liens vers d'autres pages du site"
+              alt="menu contenant des liens vers d'autres pages du site"
               className="menuBurger"
             />
           </button>
@@ -180,6 +182,11 @@ function NavBar() {
       </ul>
       <section className={`articleBurger ${isOpen ? "active" : ""}`}>
         <ul>
+          <li>
+            <NavLink className="navLink" to="/admin">
+              Administration
+            </NavLink>
+          </li>
           <li>
             <NavLink className="navLink" to="/contact">
               Contact
@@ -192,12 +199,6 @@ function NavBar() {
           </li>
         </ul>
       </section>
-      {logoutMessage && (
-        <dialog open className="logout-container">
-          <p className="logout-message">{logoutMessage}</p>
-          {showLoader && <span className="loader" />}
-        </dialog>
-      )}
     </nav>
   );
 }

@@ -13,7 +13,9 @@ function ModalContent({ onClose }) {
       </button>
       <h2>Bienvenue !</h2>
       <section className="section2">
-        <p>Avec PixHunt, partez à la chasse aux œuvres d’art urbaines.</p>
+        <p>
+          Avec Street Art Hunter, partez à la chasse aux œuvres d’art urbaines.
+        </p>
         <p>
           Photographiez de nouvelles œuvres d’art à partir de votre téléphone
           pour gagner des points : cliquez sur l’appareil photo et laissez-vous

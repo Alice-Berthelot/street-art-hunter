@@ -1,7 +1,7 @@
-import "../styles/ThankYouPage.css";
-import ImgLogoPixHunt from "../assets/images/logo.png";
+import "../styles/Credits.css";
+import logo from "../assets/images/logoblue.png";
 
-function ThankYouPage() {
+function Credits() {
   return (
     <section className="thankyou-section-wrapper">
       <article className="thankyou-article-wrapper">
@@ -12,8 +12,8 @@ function ThankYouPage() {
             adorent l'art de rue.
           </h2>
           <p className="p-thankyou">
-            PixHunt est fier de vous offrir les oeuvres d'art de rue de
-            Bordeaux. Grâce à vos contributions, nous pouvons intégrer les
+            Street Art Hunter est fier de vous offrir les oeuvres d'art de rue
+            de Bordeaux. Grâce à vos contributions, nous pouvons intégrer les
             nouvelles oeuvres créées les plus récentes.
           </p>
           <h2 className="thankyou-title">
@@ -51,8 +51,8 @@ function ThankYouPage() {
         </section>
         <article className="article-thankyou">
           <img
-            src={ImgLogoPixHunt}
-            alt="Logo pixhunt"
+            src={logo}
+            alt="Logo de l'application"
             className="logo-thankyou"
           />
         </article>
@@ -61,4 +61,4 @@ function ThankYouPage() {
   );
 }
 
-export default ThankYouPage;
+export default Credits;

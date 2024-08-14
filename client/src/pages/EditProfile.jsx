@@ -8,7 +8,7 @@ function EditProfile() {
   const userData = useLoaderData();
   const { auth } = useContext(CurrentUserContext);
   const { id } = useParams();
-  return <ProfileForm user={userData} />;
+  return <ProfileForm user={userData} auth={auth} id={id} />;
 }
 
 export default EditProfile;

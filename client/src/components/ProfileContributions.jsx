@@ -18,7 +18,7 @@ function ProfileContributions({
 
   return (
     <section className="profile-contributions-section">
-      <h2 className="profile-main-titles">
+      <h2 className="profile-subtitle">
         {auth?.id === parseInt(id) ? "Mes contributions" : "Contributions"}
       </h2>
       <Splide

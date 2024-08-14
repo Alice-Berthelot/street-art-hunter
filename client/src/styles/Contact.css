@@ -74,21 +74,20 @@
 }
 
 .submit-btn {
-  display: block;
-  margin: auto;
-  padding: 0.7rem;
-  font-size: 1.2rem;
+  width: 12rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.65rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  border: none;
-  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: var(--secondary-font);
-}
-
-.submit-btn:hover:not(:disabled) {
-  scale: 0.95;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .alert {
@@ -121,6 +120,14 @@
     padding-bottom: 0;
     width: 100%;
     display: block;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    letter-spacing: 0.1rem;
   }
 
   .contact-article-wrapper {

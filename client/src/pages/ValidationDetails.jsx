@@ -1,7 +1,6 @@
 import { Form, useLoaderData, useParams } from "react-router-dom";
 import { useState } from "react";
 import BtnGoBack from "../components/BtnGoBack";
-import DesktopBar from "../components/DesktopBar";
 import "../styles/Validation.css";
 import arrowDown from "../assets/images/doublearrowdown.svg";
 
@@ -16,9 +15,6 @@ function ValidationDetails() {
     (art) => art.id === parseInt(id, 10)
   );
   const artUrl = import.meta.env.VITE_API_URL;
-
-  const styleDesktopBarContent = "admin-links-bar";
-  const styleDesktopBarSection = "admin-links-bar-nav";
 
   const dateOptions = {
     day: "numeric",
@@ -55,10 +51,7 @@ function ValidationDetails() {
     <section className="validation-section-wrapper">
       <article className="validation-article">
         <BtnGoBack />
-        <DesktopBar
-          classNameBody={styleDesktopBarContent}
-          classNameNav={styleDesktopBarSection}
-        />
+        <h1>Validation des oeuvres</h1>
         <section className="validation-details-section">
           <section className="validation-content">
             <h2 className="profile-main-titles">Proposition</h2>
@@ -117,7 +110,7 @@ function ValidationDetails() {
                 {exactMatches.map((art) => (
                   <article key={art.id}>
                     <img
-                      src={`${artUrl}${art.image}`}
+                      src={`${artUrl}/${art.image}`}
                       alt="Œuvre similaire, d'ores et déjà affichée sur le site"
                     />
                     <ul>

@@ -7,7 +7,7 @@ function ProfilePoints({ sortedUsers, user, auth, id }) {
 
   return (
     <section className="profile-points-section">
-      <h2 className="profile-points-title">
+      <h2 className="profile-subtitle">
         {auth?.id === parseInt(id) ? "Mes points" : "Points"}
       </h2>
       <article className="profile-points-article">

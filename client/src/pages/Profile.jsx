@@ -29,18 +29,11 @@ function Profile() {
   return (
     <section className="profile-section-wrapper">
       <article className="profile-article">
-        {auth?.id === parseInt(id) ? (
-          <h1>Mon profil</h1>
-        ) : (
-          <h1>Profil de {userData.username}</h1>
-        )}
-        <section className="link-admin-section">
-          {auth?.role === 1 && (
-            <Link to="/admin" className="link-admin">
-              Page d'administration
-            </Link>
-          )}
-        </section>
+        <h1>
+          {auth?.id === parseInt(id)
+            ? "MON PROFIL"
+            : `PROFIL DE ${userData.username.toUpperCase()}`}
+        </h1>
         <section className="profile-desktop-wrapper">
           <article className="profile-info-wrapper">
             <ProfileInfo user={userData} auth={auth} id={id} />
