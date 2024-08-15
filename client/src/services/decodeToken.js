@@ -7,8 +7,10 @@ export default function decodeTokenAndExtractRole(token) {
     return {
       id: decoded.sub,
       role: decoded.role,
+      exp: decoded.exp,
     };
   } catch (error) {
     return null;
   }
 }
+ 

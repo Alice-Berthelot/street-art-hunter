@@ -5,11 +5,11 @@ function Credits() {
   return (
     <section className="thankyou-section-wrapper">
       <article className="thankyou-article-wrapper">
-        <h1 className="thankyou-main-title">Remerciements</h1>
+        <h1 className="thankyou-main-title">REMERCIEMENTS</h1>
         <section className="thankyou-page">
           <h2 className="thankyou-title">
-            Nous voulons remercier tous nos amis utilisateurs qui comme nous
-            adorent l'art de rue.
+            Nous voulons remercier tous nos amis utilisateurs qui, comme nous
+            adorent, l'art de rue.
           </h2>
           <p className="p-thankyou">
             Street Art Hunter est fier de vous offrir les oeuvres d'art de rue

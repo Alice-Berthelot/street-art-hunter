@@ -26,15 +26,9 @@
   color: var(--secondary-color);
 }
 
-.thankyou-title {
-  padding-top: 0.4rem;
-  font-size: 1rem;
-}
-
 .thankyou-page > a {
   color: var(--secondary-color);
   text-decoration: underline;
-  font-size: 0.8rem;
 }
 
 .article-thankyou {
@@ -44,7 +38,6 @@
 
 .p-thankyou {
   padding-top: 0.5rem;
-  font-size: 0.8rem;
 }
 
 .logo-thankyou {
@@ -80,18 +73,8 @@
     color: var(--secondary-color);
   }
 
-  .thankyou-title {
-    padding-top: 1rem;
-    font-size: 1.8rem;
-  }
-
   .article-thankyou {
     display: flex;
     justify-content: center;
-  }
-
-  .p-thankyou,
-  .thankyou-page > a {
-    font-size: 1.3rem;
   }
 }

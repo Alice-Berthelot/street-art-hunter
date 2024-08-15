@@ -1,14 +1,16 @@
 import "../styles/AdminStreetArtPage.css";
 import PropTypes from "prop-types";
 import BtnGoBack from "./BtnGoBack";
+import AdminLinks from "./AdminLinks";
 
-function StreetArtList({ images, pictures }) {
+function StreetArtList({ pictures }) {
   const artUrl = import.meta.env.VITE_API_URL;
 
   return (
     <section className="artlist-section-wrapper">
       <article className="artlist-article">
         <BtnGoBack />
+        <AdminLinks />
         <h2 className="title-artgallery">
           Oeuvres ajoutées par les utilisateurs
         </h2>

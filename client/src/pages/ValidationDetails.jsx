@@ -3,6 +3,7 @@ import { useState } from "react";
 import BtnGoBack from "../components/BtnGoBack";
 import "../styles/Validation.css";
 import arrowDown from "../assets/images/doublearrowdown.svg";
+import AdminLinks from "../components/AdminLinks";
 
 function ValidationDetails() {
   const comparedArts = useLoaderData();
@@ -51,7 +52,7 @@ function ValidationDetails() {
     <section className="validation-section-wrapper">
       <article className="validation-article">
         <BtnGoBack />
-        <h1>Validation des oeuvres</h1>
+        <AdminLinks />
         <section className="validation-details-section">
           <section className="validation-content">
             <h2 className="profile-main-titles">Proposition</h2>
@@ -106,7 +107,7 @@ function ValidationDetails() {
                 />
               </section>
               <section className="validation-content-comparison">
-                <h2 className="profile-main-titles">Original</h2>
+                <h2 className="profile-main-titles">Oeuvres existantes</h2>
                 {exactMatches.map((art) => (
                   <article key={art.id}>
                     <img

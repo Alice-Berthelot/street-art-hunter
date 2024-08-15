@@ -17,7 +17,7 @@ footer {
   }
 
   .footer-position-static {
-    margin-bottom: 0;
+    position: static;
   }
 
   .footer-position-fixed {

@@ -14,7 +14,7 @@
 }
 
 .leaflet-control-geocoder-form {
-  display: block;
+  display: block !important;
   padding: 1rem;
   border: 2px solid var(--secondary-color);
   border-radius: 0.6rem;
@@ -29,8 +29,8 @@
 .leaflet-touch .leaflet-control-geocoder-icon {
   position: absolute;
   right: 0;
-  width: 3.2rem;
-  height: 3.4rem;
+  width: 3.2rem !important;
+  height: 3.4rem !important;
   background-color: var(--secondary-color);
   background-image: url("../assets/images/icons8-search.svg");
   border-top-right-radius: 0.8rem;

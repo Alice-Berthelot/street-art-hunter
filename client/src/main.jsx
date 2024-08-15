@@ -5,7 +5,7 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
-
+import { toast } from "react-toastify";
 import App from "./App";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -154,6 +154,7 @@ const router = createBrowserRouter([
 
             const authData = await response.json();
             localStorage.setItem("token", authData.token);
+            toast.success("Vous êtes connecté(e)");
             return redirect("/");
           } catch (error) {
             return {
@@ -205,7 +206,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile/:id/edit",
-        element: <EditProfile />,
+        element: (
+          <AuthProtected>
+            <EditProfile />
+          </AuthProtected>
+        ),
         loader: ({ params }) => fetchApi(`${baseUserUrl}/${params.id}`),
         action: async ({ request, params }) => {
           const formData = await request.formData();

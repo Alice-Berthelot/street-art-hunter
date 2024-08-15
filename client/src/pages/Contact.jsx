@@ -86,7 +86,7 @@ function Contact() {
         <BtnGoBack />
         <section className="contact-section">
           <article>
-            <h1 className="contact-form-h2">Contact</h1>
+            <h1 className="contact-form-title">CONTACT</h1>
             <form
               id="contact-form"
               ref={formRef}

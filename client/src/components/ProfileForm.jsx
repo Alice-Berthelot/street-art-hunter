@@ -8,7 +8,7 @@ function ProfileForm({ user, auth, id }) {
         <h1>
           {auth?.id === parseInt(id)
             ? "MON PROFIL"
-            : `PROFIL DE ${userData.username.toUpperCase()}`}
+            : `PROFIL DE ${user.username.toUpperCase()}`}
         </h1>
         <section className="profile-information-edit-section">
           <h2 className="profile-subtitle">

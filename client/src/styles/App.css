@@ -4,8 +4,10 @@
   --third-color: #f165d2;
   --fourth-color: #f4f4f4;
   --fifth-color: #252323;
+  --toastify-color-success: #f165d2;
   --primary-font: "Sedgwick Ave display", sans-serif;
   --secondary-font: "Atkinson Hyperlegible", sans-serif;
+  --toastify-font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 * {
@@ -38,4 +40,15 @@ h1 {
   padding: 3rem 2.5rem;
   width: 20rem;
   margin: auto;
+}
+
+.Toastify__toast {
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.Toastify__toast--success {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-color: var(--third-color);
 }

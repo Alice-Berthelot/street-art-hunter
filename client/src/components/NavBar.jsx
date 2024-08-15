@@ -142,7 +142,7 @@ function NavBar() {
           </li>
         )}
         {auth?.role === 1 && (
-          <li>
+          <li className="navLink-admin">
             <NavLink
               to="/admin"
               className={({ isActive }) =>
@@ -182,11 +182,13 @@ function NavBar() {
       </ul>
       <section className={`articleBurger ${isOpen ? "active" : ""}`}>
         <ul>
-          <li>
-            <NavLink className="navLink" to="/admin">
-              Administration
-            </NavLink>
-          </li>
+          {auth?.role === 1 && (
+            <li>
+              <NavLink className="navLink" to="/admin">
+                Administration
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink className="navLink" to="/contact">
               Contact

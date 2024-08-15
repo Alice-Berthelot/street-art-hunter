@@ -2,6 +2,7 @@ import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import BtnGoBack from "./BtnGoBack";
+import AdminLinks from "./AdminLinks";
 
 function UserList({ users }) {
   const [selectedBtn, setSelectedBtn] = useState("Tous");
@@ -26,6 +27,7 @@ function UserList({ users }) {
     <section className="user-list-info-section">
       <article className="artlist-article">
         <BtnGoBack />
+        <AdminLinks />
         <h2 className="user-list-h2">Liste des utilisateurs</h2>
         <ul className="user-list-ul">
           <li>
@@ -51,7 +53,7 @@ function UserList({ users }) {
           <thead>
             <tr className="user-list-theader">
               <th className="user-list-th">Pseudo</th>
-              <th className="user-list-th">Points</th>
+              <th className="user-list-th">Ville</th>
             </tr>
           </thead>
           <tbody className="user-list-cells">
@@ -60,7 +62,7 @@ function UserList({ users }) {
                 <Link to={`/profile/${user.id}`}>
                   <td className="user-list-tr">{user.username}</td>
                 </Link>
-                <td className="user-list-tr">{user.point_number}</td>
+                <td className="user-list-tr">{user.city}</td>
               </tr>
             ))}
           </tbody>

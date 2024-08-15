@@ -1,3 +1,8 @@
+.camera-main-title {
+  background-position: 1rem center;
+  width: 100%;
+}
+
 .camera-modal {
   padding: 5rem 1rem;
   border-radius: 0.5rem;
@@ -103,13 +108,14 @@
   gap: 2rem;
 }
 
-.button-retake-picture,
-.button-submit-picture {
+.button-container > button {
   padding: 1rem 2.5rem;
   font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
   color: var(--primary-color);
   background-color: var(--secondary-color);
-  border-radius: 0.7rem;
+  border-radius: 0.65rem;
   border: none;
 }
 

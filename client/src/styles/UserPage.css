@@ -55,6 +55,7 @@
   width: 90%;
   color: var(--secondary-color);
   margin-bottom: 2rem;
+  border-spacing: 0;
 }
 
 tbody > tr > a {
@@ -85,7 +86,6 @@ tbody > tr > a {
     background-image: none;
     min-height: auto;
     padding-bottom: 0;
-    width: 80%;
     display: flex;
     justify-content: center;
   }

@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import BtnGoBack from "../components/BtnGoBack";
 import "../styles/Validation.css";
+import AdminLinks from "../components/AdminLinks";
 
 function Validation() {
   const comparedArts = useLoaderData();
@@ -13,6 +14,7 @@ function Validation() {
     <section className="validation-section-wrapper">
       <article className="validation-article">
         <BtnGoBack />
+        <AdminLinks />
         <section className="validation-section">
           <h2 className="validation-main-titles">Ajouts à valider</h2>
           <figure>

@@ -1,26 +1,52 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-function AdminLinks({ classNameBody, classNameNav }) {
+function AdminLinks() {
+  const location = useLocation();
+
   return (
-    <nav
-      className={classNameNav}
-      aria-label="Lien vers les pages réservées aux administrateurs"
-    >
-      <Link to="/admin" className={classNameBody}>
-        Statistiques
-      </Link>
-      <Link to="/admin/users" className={classNameBody}>
-        Liste des utilisateurs
-      </Link>
-      <Link to="/admin/artlist" className={classNameBody}>
-        Aperçu des oeuvres
-      </Link>
-
-      <Link to="/admin/validation" className={classNameBody}>
-        Validation des ajouts
-      </Link>
-    </nav>
+    <>
+      <h1>ADMINISTRATION</h1>
+      <nav
+        className="admin-links-nav"
+        aria-label="Lien vers les pages réservées aux administrateurs"
+      >
+        <NavLink
+          to="/admin"
+          className={
+            location.pathname === "/admin"
+              ? "admin-links-link-active"
+              : "admin-links-link"
+          }
+        >
+          Statistiques
+        </NavLink>
+        <NavLink
+          to="/admin/users"
+          className={({ isActive }) =>
+            isActive ? "admin-links-link-active" : "admin-links-link"
+          }
+        >
+          Utilisateurs
+        </NavLink>
+        <NavLink
+          to="/admin/artlist"
+          className={({ isActive }) =>
+            isActive ? "admin-links-link-active" : "admin-links-link"
+          }
+        >
+          Gallerie
+        </NavLink>
+        <NavLink
+          to="/admin/validation"
+          className={({ isActive }) =>
+            isActive ? "admin-links-link-active" : "admin-links-link"
+          }
+        >
+          Validation
+        </NavLink>
+      </nav>
+    </>
   );
 }
 

@@ -53,8 +53,8 @@ function Camera() {
 
   return (
     <>
-      <h1>Appareil photo</h1>
-      <p>Prenez en photo des oeuvres afin de gagner des points !</p>
+      <h1 className="camera-main-title">APPAREIL PHOTO</h1>
+      <p>Prenez en photo des oeuvres et gagnez des points !</p>
       <Form
         method="POST"
         encType="multipart/form-data"
