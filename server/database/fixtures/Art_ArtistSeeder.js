@@ -2,10 +2,10 @@ const AbstractSeeder = require("./AbstractSeeder");
 const ArtSeeder = require("./ArtSeeder");
 const ArtistSeeder = require("./ArtistSeeder");
 
-class CreatingSeeder extends AbstractSeeder {
+class Art_ArtistSeeder extends AbstractSeeder {
   constructor() {
     super({
-      table: "creating",
+      table: "art_artist",
       truncate: true,
       dependencies: [ArtSeeder, ArtistSeeder],
     });
@@ -18,14 +18,14 @@ class CreatingSeeder extends AbstractSeeder {
       const artRef = this.getRef(`art_fixed_${index}`);
       const artistRef = this.getRef(`artist_${index}`);
 
-      const creating = {
+      const art_artist = {
         art_id: artRef.insertId,
         artist_id: artistRef.insertId,
       };
 
-      this.insert(creating);
+      this.insert(art_artist);
     });
   }
 }
 
-module.exports = CreatingSeeder;
+module.exports = Art_ArtistSeeder;

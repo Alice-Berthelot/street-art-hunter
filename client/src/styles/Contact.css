@@ -1,6 +1,6 @@
 .contact-section-wrapper {
   background-image: linear-gradient(rgba(41, 42, 99, 1), rgba(255, 212, 76, 0)),
-    url("../assets/images/backgroundRegister.png");
+    url("../assets/images/gorille.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,7 +14,7 @@
 .contact-article-wrapper {
   width: 98%;
   background-color: var(--fourth-color);
-  padding-top: 3.4rem;
+  margin-top: 3.2rem;
   border: 1px solid var(--fifth-color);
   border-radius: 0.8125rem;
 }
@@ -129,7 +129,7 @@
 
   .contact-article-wrapper {
     width: 100%;
-    margin-top: 0;
+    margin-top: 3.5rem;
     border: none;
     border-radius: 0;
     display: block;

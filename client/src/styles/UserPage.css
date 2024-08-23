@@ -1,6 +1,6 @@
 .user-list-info-section {
   background-image: linear-gradient(rgba(41, 42, 99, 1), rgba(255, 212, 76, 0)),
-    url("../assets/images/backgroundRegister.png");
+    url("../assets/images/gorille.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 .artlist-article {
-  width: 95%;
+  width: 98%;
   background-color: var(--fourth-color);
   margin-top: 3.2rem;
   border: 1px solid var(--fifth-color);
@@ -92,9 +92,11 @@ tbody > tr > a {
 
   .artlist-article {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
     border: none;
     border-radius: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .user-list-ul {
@@ -114,23 +116,5 @@ tbody > tr > a {
   .user-list-table th:last-child,
   .user-list-table td:last-child {
     text-align: center;
-  }
-
-  @media screen and (min-width: 1200px) {
-    .user-list {
-      display: grid;
-      grid-template-columns: repeat(6, 0.2fr);
-      grid-template-rows: repeat(2, 1fr);
-      width: 92%;
-    }
-
-    .user-list-h2 {
-      font-size: 2.4rem;
-      margin: 1.5rem 0;
-    }
-
-    .user-list-button {
-      font-size: 1.3rem;
-    }
   }
 }

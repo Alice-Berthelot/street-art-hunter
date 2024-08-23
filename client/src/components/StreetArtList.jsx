@@ -2,8 +2,19 @@ import "../styles/AdminStreetArtPage.css";
 import PropTypes from "prop-types";
 import BtnGoBack from "./BtnGoBack";
 import AdminLinks from "./AdminLinks";
+import GalleryDetails from "./GalleryDetails";
 
-function StreetArtList({ pictures }) {
+function StreetArtList({
+  pictures,
+  selectedArt,
+  setSelectedArt,
+  isOpen,
+  setIsOpen,
+  handleOpenModal,
+  handleCloseModal,
+  translations,
+  dateOptions,
+}) {
   const artUrl = import.meta.env.VITE_API_URL;
 
   return (
@@ -16,7 +27,14 @@ function StreetArtList({ pictures }) {
         </h2>
         <ul className="gallery-list">
           {pictures.map((picture) => (
-            <li key={picture.id} className="img">
+            <li
+              key={picture.id}
+              className="img"
+              onClick={() => {
+                setSelectedArt(picture);
+                handleOpenModal();
+              }}
+            >
               <img
                 src={`${artUrl}/${picture.image}`}
                 alt={`oeuvre d'art ${picture.id}`}
@@ -24,6 +42,16 @@ function StreetArtList({ pictures }) {
             </li>
           ))}
         </ul>
+        {isOpen && selectedArt && (
+          <GalleryDetails
+            art={selectedArt}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            handleCloseModal={handleCloseModal}
+            translations={translations}
+            dateOptions={dateOptions}
+          />
+        )}
       </article>
     </section>
   );

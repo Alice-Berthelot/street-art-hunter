@@ -52,3 +52,12 @@ h1 {
   background-color: var(--secondary-color);
   border-color: var(--third-color);
 }
+
+.Toastify__close-button {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.Toastify__close-button:hover {
+  color: var(--third-color);
+}

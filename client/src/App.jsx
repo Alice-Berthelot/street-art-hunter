@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { users, pictures } = useLoaderData();
+  console.log(pictures);
   return (
     <>
       <HeaderMobile />

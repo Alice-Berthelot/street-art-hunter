@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -29,8 +29,9 @@ import {
   basePictureUrl,
   baseUploadUrl,
   baseAcceptedArtUrl,
-} from "./services/urls";
+} from "./services/url";
 import { fetchApi, sendData } from "./services/api.service";
+import { getToken } from "./services/getToken";
 import { CurrentUserProvider } from "./contexts/CurrentUserProvider";
 import Score from "./pages/Score";
 import AdminStreetArtPage from "./pages/AdminStreetArtPage";
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
     loader: async () => {
       const [users, pictures] = await Promise.all([
         fetchApi(`${baseUserUrl}`),
-        fetchApi(`${basePictureUrl}`),
+        fetchApi(`${baseArtUrl}gallery`),
       ]);
       return { users, pictures };
     },
@@ -171,20 +172,22 @@ const router = createBrowserRouter([
           </AuthProtected>
         ),
         loader: async ({ params }) => {
-          const [sortedUsers, userData, artData, pictureData] =
-            await Promise.all([
-              fetchApi(`${baseUserUrl}rank`),
-              fetchApi(`${baseUserUrl}/${params.id}`),
-              fetchApi(`${baseArtUrl}/${params.id}`),
-              fetchApi(`${basePictureUrl}/${params.id}`),
-            ]);
-          return { sortedUsers, userData, artData, pictureData };
+          const [sortedUsers, userData, artData] = await Promise.all([
+            fetchApi(`${baseUserUrl}rank`),
+            fetchApi(`${baseUserUrl}/${params.id}`),
+            fetchApi(`${baseArtUrl}/${params.id}`),
+          ]);
+          return { sortedUsers, userData, artData };
         },
         action: async ({ params }) => {
+          const token = getToken();
           await fetch(
             `${import.meta.env.VITE_API_URL}${baseUserUrl}${params.id}`,
             {
               method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
           );
           return redirect("/");
@@ -195,7 +198,7 @@ const router = createBrowserRouter([
             element: <ProfileInfo />,
           },
           {
-            path: "",
+            path: "delete",
             element: <ProfileDelete />,
           },
           {
@@ -243,12 +246,11 @@ const router = createBrowserRouter([
           </AdminProtected>
         ),
         loader: async () => {
-          const [users, countUsers, countArts] = await Promise.all([
-            fetchApi(`${baseUserUrl}`),
+          const [countUsers, countArts] = await Promise.all([
             fetchApi(`${baseUserUrl}count`),
             fetchApi(`${baseArtUrl}count`),
           ]);
-          return { users, countUsers, countArts };
+          return { countUsers, countArts };
         },
       },
       {
@@ -272,6 +274,18 @@ const router = createBrowserRouter([
             <AdminStreetArtPage />
           </AdminProtected>
         ),
+        action: async ({ request }) => {
+          const formData = await request.formData();
+          const artId = formData.get("artId");
+          const token = getToken();
+          await fetch(`${import.meta.env.VITE_API_URL}${baseArtUrl}${artId}`, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          return redirect("/admin/artlist");
+        },
         children: [
           {
             path: "",

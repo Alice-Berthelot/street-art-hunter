@@ -12,10 +12,13 @@ const {
   destroy,
 } = require("../../../controllers/userActions");
 
+const { authorize } = require("../../../middlewares/authorize");
+const { authorizeProfileAccess } = require("../../../middlewares/authorizeProfileAccess");
+
 router.get("/", browse);
 router.get("/count", count);
 router.get("/rank", rank);
-router.put("/editpoint", editPoints);
+router.put("/editpoint", authorize('admin'), editPoints);
 router.get("/:id", read);
 router.put("/:id", edit);
 router.delete("/:id", destroy);

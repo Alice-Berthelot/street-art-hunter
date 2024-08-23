@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useOutletContext, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 import ProfileForm from "../components/ProfileForm";
@@ -8,7 +8,20 @@ function EditProfile() {
   const userData = useLoaderData();
   const { auth } = useContext(CurrentUserContext);
   const { id } = useParams();
-  return <ProfileForm user={userData} auth={auth} id={id} />;
+  const { users } = useOutletContext();
+
+  const existingUsernames = users.map((user) => user.username);
+  const existingEmails = users.map((user) => user.email);
+
+  return (
+    <ProfileForm
+      user={userData}
+      auth={auth}
+      id={id}
+      existingUsernames={existingUsernames}
+      existingEmails={existingEmails}
+    />
+  );
 }
 
 export default EditProfile;

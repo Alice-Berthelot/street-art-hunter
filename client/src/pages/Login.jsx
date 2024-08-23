@@ -1,9 +1,14 @@
 import { Form, Link, useActionData } from "react-router-dom";
 import "../styles/RegisterLogin.css";
 import ImgMockUp from "../assets/images/mockup2.png";
+import { toast } from "react-toastify";
 
 function Login() {
   const actionData = useActionData();
+
+  if (actionData && actionData.success) {
+    toast.success("Vous êtes connecté(é).");
+  }
 
   return (
     <section className="registerAndLoginForm">

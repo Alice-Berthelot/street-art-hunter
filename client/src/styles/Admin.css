@@ -1,6 +1,6 @@
 .admin-section-wrapper {
   background-image: linear-gradient(rgba(41, 42, 99, 1), rgba(255, 212, 76, 0)),
-    url("../assets/images/backgroundRegister.png");
+    url("../assets/images/gorille.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -113,7 +113,7 @@
 
   .admin-article {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
     border: none;
     border-radius: 0;
     display: flex;

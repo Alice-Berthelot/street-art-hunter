@@ -29,10 +29,6 @@
   padding: 1.5rem 0.5rem 2rem 0.5rem;
 }
 
-.profile-contributions-section {
-  width: 100%;
-}
-
 .profile-information-section,
 .profile-contributions-section,
 .profile-information-edit-section {
@@ -293,7 +289,7 @@
 
   .profile-article {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
     border: none;
     border-radius: 0;
     display: flex;
@@ -309,6 +305,7 @@
   .profile-desktop-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 95%;
   }
 
@@ -321,12 +318,16 @@
 
   .profile-points-section {
     width: 40%;
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
 
   .profile-information-form > article:last-of-type {
     display: flex;
     flex-direction: row;
     gap: 2rem;
+  }
+
+  .profile-contributions-section {
+    width: 100%;
   }
 }

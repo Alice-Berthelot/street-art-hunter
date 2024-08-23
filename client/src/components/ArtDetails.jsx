@@ -45,21 +45,28 @@ function ArtDetails({ art, isOpen, handleCloseModal }) {
     </dialog>
   );
 }
+
 ArtDetails.propTypes = {
   art: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     image: PropTypes.string,
     title: PropTypes.string,
-    artist: PropTypes.string,
     information: PropTypes.string,
-  }),
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
+  }).isRequired,
   onClose: PropTypes.func.isRequired,
 };
+
 ArtDetails.defaultProps = {
   art: {
+    id: 0,
     image: "",
     title: "",
-    artist: "",
     information: "",
+    latitude: "",
+    longitude: "",
   },
 };
+
 export default ArtDetails;

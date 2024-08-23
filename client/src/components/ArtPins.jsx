@@ -1,4 +1,5 @@
 import { Marker, Popup } from "react-leaflet";
+import PropTypes from "prop-types";
 
 function ArtPins({
   artData,
@@ -24,5 +25,19 @@ function ArtPins({
     </>
   );
 }
+
+ArtPins.propTypes = {
+  artData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      latitude: PropTypes.string.isRequired,
+      longitude: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  geolocationIcon: PropTypes.object.isRequired,
+  artIcon: PropTypes.object.isRequired,
+  handleOpenModal: PropTypes.func.isRequired,
+};
 
 export default ArtPins;

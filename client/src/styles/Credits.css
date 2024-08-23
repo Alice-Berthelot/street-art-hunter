@@ -26,6 +26,10 @@
   color: var(--secondary-color);
 }
 
+.thankyou-main-title {
+  width: 25rem;
+}
+
 .thankyou-page > a {
   color: var(--secondary-color);
   text-decoration: underline;
@@ -69,7 +73,7 @@
   .thankyou-page {
     display: flex;
     flex-direction: column;
-    margin: 5rem 15rem 0 15rem;
+    margin: 2rem 15rem 0 15rem;
     color: var(--secondary-color);
   }
 

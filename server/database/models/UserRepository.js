@@ -1,12 +1,11 @@
 const AbstractRepository = require("./AbstractRepository");
-const PictureRepository = require("./PictureRepository");
-const ArtRepository = require("./ArtRepository");
+const fs = require("fs");
+const path = require("path");
 
 class UserRepository extends AbstractRepository {
   constructor() {
     super({ table: "user" });
-    this.pictureRepository = new PictureRepository();
-    this.artRepository = new ArtRepository();
+    this.uploadDir = path.join(__dirname, "/../../public/assets/images/upload");
   }
 
   async create(user) {
@@ -20,7 +19,7 @@ class UserRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.username, ${this.table}.city, ${this.table}.zipcode, ${this.table}.email, ${this.table}.point_number, ${this.table}.is_Admin, ${this.table}.registration_date FROM ${this.table}`
+      `SELECT ${this.table}.id, ${this.table}.username, ${this.table}.city, ${this.table}.zipcode, ${this.table}.email, ${this.table}.point_number, ${this.table}.is_admin, ${this.table}.registration_date FROM ${this.table}`
     );
     return rows;
   }
@@ -42,14 +41,14 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async getTotalUsers() {
+  async readTotalUsers() {
     const [rows] = await this.database.query(
       `SELECT count(*) as totalUsers, sum(CASE WHEN registration_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN 1 ELSE 0 END) AS recentUsers FROM ${this.table}`
     );
     return rows[0];
   }
 
-  async getRanking() {
+  async readRanking() {
     const [rows] = await this.database.query(
       `SELECT id, username, point_number FROM ${this.table} ORDER BY point_number DESC`
     );
@@ -74,13 +73,58 @@ class UserRepository extends AbstractRepository {
     return result.affectedRows;
   }
 
+  // async delete(userId) {
+  //   await this.pictureRepository.deleteByUserId(userId);
+  //   const [result] = await this.database.query(
+  //     `DELETE FROM ${this.table} WHERE id = ?`,
+  //     [userId]
+  //   );
+  //   return result.affectedRows;
+  // }
+
   async delete(userId) {
-    await this.pictureRepository.deleteByUserId(userId);
-    const [result] = await this.database.query(
-      `DELETE FROM ${this.table} WHERE id = ?`,
-      [userId]
-    );
-    return result.affectedRows;
+    await this.database.query("START TRANSACTION");
+    try {
+
+      await this.database.query("SET FOREIGN_KEY_CHECKS = 0");
+
+      await this.database.query(
+        "DELETE a FROM picture as p JOIN art as a ON a.id = p.art_id WHERE p.user_id = ?",
+        [userId]
+      );
+
+      const [pictures] = await this.database.query(
+        "SELECT image FROM picture WHERE user_id = ?",
+        [userId]
+      );
+
+      pictures.forEach((picture) => {
+          const filePath = path.join(this.uploadDir, picture.image);
+          if (fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath);
+          } else {
+            console.warn("Fichier non trouvé:", filePath);
+          }
+      });
+
+      await this.database.query("DELETE FROM picture WHERE user_id = ?", [
+        userId,
+      ]);
+
+      const [result] = await this.database.query(
+        `DELETE FROM ${this.table} WHERE id = ?`,
+        [userId]
+      );
+
+      await this.database.query("SET FOREIGN_KEY_CHECKS = 1");
+
+      await this.database.query("COMMIT");
+      return result.affectedRows;
+    } catch (error) {
+      await this.database.query("ROLLBACK");
+      await this.database.query("SET FOREIGN_KEY_CHECKS = 1");
+      throw error;
+    }
   }
 }
 

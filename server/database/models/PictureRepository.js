@@ -5,14 +5,6 @@ class PictureRepository extends AbstractRepository {
     super({ table: "picture" });
   }
 
-  async read(id) {
-    const [rows] = await this.database.query(
-      `SELECT image FROM ${this.table} WHERE user_id = ?`,
-      [id]
-    );
-    return rows;
-  }
-
   async readAll() {
     const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
     return rows;
@@ -25,30 +17,6 @@ class PictureRepository extends AbstractRepository {
     );
 
     return result.insertId;
-  }
-
-  async readByUserId(userId) {
-    const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE user_id = ?`,
-      [userId]
-    );
-    return rows;
-  }
-
-  async readByStatus(status) {
-    const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE status = ?`,
-      [status]
-    );
-    return rows;
-  }
-
-  async readByArtId(artId) {
-    const [rows] = await this.database.query(
-      `SELECT image FROM ${this.table} WHERE art_id = ?`,
-      [artId]
-    );
-    return rows;
   }
 
   async deleteByUserId(userId) {

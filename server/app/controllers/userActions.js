@@ -6,7 +6,7 @@ const browse = async (req, res, next) => {
     if (users == null) {
       res.sendStatus(404);
     }
-    res.json(users);
+    res.status(200).json(users);
   } catch (err) {
     next(err);
   }
@@ -18,7 +18,7 @@ const read = async (req, res, next) => {
     if (user == null) {
       res.sendStatus(404);
     }
-    res.json(user);
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
@@ -52,7 +52,7 @@ const editPoints = async (req, res, next) => {
 
 const count = async (req, res, next) => {
   try {
-    const users = await tables.user.getTotalUsers();
+    const users = await tables.user.readTotalUsers();
     if (users == null) {
       res.sendStatus(404);
     }
@@ -64,7 +64,7 @@ const count = async (req, res, next) => {
 
 const rank = async (req, res, next) => {
   try {
-    const users = await tables.user.getRanking();
+    const users = await tables.user.readRanking();
     if (users == null) {
       res.sendStatus(404);
     }

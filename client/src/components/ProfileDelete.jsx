@@ -1,8 +1,8 @@
 import { PropTypes } from "prop-types";
-import { Form, useParams } from "react-router-dom";
-import { useContext, useEffect, useRef } from "react";
+import { Form } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { TfiHandStop } from "react-icons/tfi";
-import { CurrentUserContext } from "../contexts/CurrentUserProvider";
+import { toast } from "react-toastify";
 
 function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
   const dialog = useRef();
@@ -18,6 +18,7 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
   const handleSubmit = () => {
     if (auth.role !== 1 || (auth.role === 1 && auth.id === parseInt(id, 10))) {
       logout();
+      toast.success("Le profil a bien été supprimé.");
     }
   };
 
@@ -35,15 +36,20 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
       </header>
       <article className="modal-content-delete-profile">
         <TfiHandStop className="hand-icon-delete-profile" />
-        <p>Êtes-vous sûr de vouloir supprimer votre profil ?</p>
         <p>
-          Cette action est irréversible et entraînera la perte de toutes vos
-          données.
+          Êtes-vous sûr de vouloir supprimer{" "}
+          {auth?.id === parseInt(id, 10) ? "votre" : "ce"} profil ?
+        </p>
+        <p>
+          Cette action est irréversible et entraînera la perte de toutes{" "}
+          {auth?.id === parseInt(id, 10)
+            ? "vos données"
+            : "les données de l'utilisateur"}{" "}
+          (informations personnelles et oeuvres d'art ajoutées).
         </p>
         <Form method="delete">
           <button
             type="submit"
-            aria-label="Fermer la fenêtre"
             className="confirm-delete-profile"
             onClick={handleSubmit}
           >
@@ -52,7 +58,6 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
         </Form>
         <button
           type="button"
-          aria-label="Fermer la fenêtre"
           onClick={handleClose}
           className="cancel-delete-profile"
         >

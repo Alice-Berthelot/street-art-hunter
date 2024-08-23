@@ -1,6 +1,6 @@
 .artlist-section-wrapper {
   background-image: linear-gradient(rgba(41, 42, 99, 1), rgba(255, 212, 76, 0)),
-    url("../assets/images/backgroundRegister.png");
+    url("../assets/images/gorille.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 .artlist-article {
-  width: 95%;
+  width: 98%;
   background-color: var(--fourth-color);
   margin-top: 3.2rem;
   border: 1px solid var(--fifth-color);
@@ -68,7 +68,7 @@
 
   .artlist-article {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
     border: none;
     padding-bottom: 0;
   }
@@ -77,20 +77,11 @@
     display: flex;
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(4, 0.25fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    grid-auto-rows: auto;
     grid-column-gap: 1.5rem;
     grid-row-gap: 1.5rem;
     margin: 3rem auto;
     width: 95%;
-  }
-
-  @media screen and (min-width: 1450px) {
-    .title-artgallery {
-      font-size: 2rem;
-      padding: 3rem 0 0.5rem 0;
-      color: var(--third-color);
-      text-align: center;
-    }
   }
 }

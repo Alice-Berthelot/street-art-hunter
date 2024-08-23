@@ -1,7 +1,8 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useOutletContext } from "react-router-dom";
 import "../styles/RegisterLogin.css";
 import { useRef, useState } from "react";
 import mockupImg from "../assets/images/mockup2.png";
+import { toast } from "react-toastify";
 
 function Register() {
   const emailRegex = /[a-z0-9._]+@[a-z0-9-]+\.[a-z]{2,3}/;
@@ -11,6 +12,10 @@ function Register() {
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const [errors, setErrors] = useState({});
+  const { users } = useOutletContext();
+
+  const existingUsernames = users.map((user) => user.username);
+  const existingEmails = users.map((user) => user.email);
 
   const handleSubmit = (event) => {
     const newErrors = {};
@@ -20,21 +25,29 @@ function Register() {
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
 
+    if (existingUsernames.includes(username)) {
+      newErrors.username = "Ce pseudonyme est déjà utilisé.";
+    }
+
     if (username.length < 5) {
-      newErrors.username = "Le pseudonyme doit contenir au moins 5 caractères";
+      newErrors.username = "Le pseudonyme doit contenir au moins 5 caractères.";
+    }
+
+    if (existingEmails.includes(email)) {
+      newErrors.email = "Cet e-mail est déjà utilisé.";
     }
 
     if (!emailRegex.test(email)) {
-      newErrors.email = "Il faut une adresse mail valide";
+      newErrors.email = "L'adresse e-mail n'est pas valide.";
     }
 
     if (password.length < 8) {
       newErrors.password =
-        "Le mot de passe doit contenir au moins 8 caractères";
+        "Le mot de passe doit contenir au moins 8 caractères.";
     }
 
     if (password !== confirmPassword) {
-      newErrors.confirmPassword = "Les mots de passe ne correspondent pas";
+      newErrors.confirmPassword = "Les mots de passe ne correspondent pas.";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -42,7 +55,12 @@ function Register() {
       setErrors(newErrors);
     }
 
-    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      event.preventDefault();
+      setErrors(newErrors);
+    } else {
+      toast.success("Vous êtes inscrit(e).", {});
+    }
   };
 
   return (

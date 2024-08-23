@@ -18,7 +18,7 @@
 
 .score-section-wrapper {
   background-image: linear-gradient(rgba(41, 42, 99, 1), rgba(255, 212, 76, 0)),
-    url("../assets/images/backgroundRegister.png");
+    url("../assets/images/gorille.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,13 +32,9 @@
 .score-article {
   width: 98%;
   background-color: var(--fourth-color);
-  padding-top: 3.4rem;
+  margin-top: 3.2rem;
   border: 1px solid var(--fifth-color);
   border-radius: 0.8125rem;
-}
-
-.score-main-title {
-  margin-top: 2rem;
 }
 
 .podium-top3 {
@@ -202,7 +198,7 @@
 
   .score-article {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
     border: none;
     border-radius: 0;
   }

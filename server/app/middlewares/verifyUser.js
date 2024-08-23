@@ -22,8 +22,8 @@ const verifyUser = async (req, res, next) => {
       // Respond with the user in JSON format (without the hashed password)
       delete user.hashed_password;
 
-      if (user.is_Admin === 1) {
-        adminRole = user.is_Admin;
+      if (user.is_admin === 1) {
+        adminRole = user.is_admin;
       }
 
       const token = await jwt.sign(
