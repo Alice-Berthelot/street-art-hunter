@@ -28,7 +28,7 @@ function UserList({ users }) {
       <article className="artlist-article">
         <BtnGoBack />
         <AdminLinks />
-        <h2 className="user-list-h2">Liste des utilisateurs</h2>
+        <h2>Liste des utilisateurs</h2>
         <ul className="user-list-ul">
           <li>
             <button

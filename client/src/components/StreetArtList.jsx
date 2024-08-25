@@ -22,14 +22,11 @@ function StreetArtList({
       <article className="artlist-article">
         <BtnGoBack />
         <AdminLinks />
-        <h2 className="title-artgallery">
-          Oeuvres ajoutées par les utilisateurs
-        </h2>
+        <h2>Oeuvres présentes sur l'application</h2>
         <ul className="gallery-list">
           {pictures.map((picture) => (
             <li
               key={picture.id}
-              className="img"
               onClick={() => {
                 setSelectedArt(picture);
                 handleOpenModal();

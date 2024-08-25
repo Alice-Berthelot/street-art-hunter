@@ -1,11 +1,12 @@
 import { PropTypes } from "prop-types";
 import { Form } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { TfiHandStop } from "react-icons/tfi";
-import { toast } from "react-toastify";
+import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
 function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
   const dialog = useRef();
+  const { setAuth } = useContext(CurrentUserContext);
 
   useEffect(() => {
     if (isOpen) {
@@ -17,8 +18,8 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
 
   const handleSubmit = () => {
     if (auth.role !== 1 || (auth.role === 1 && auth.id === parseInt(id, 10))) {
-      logout();
-      toast.success("Le profil a bien été supprimé.");
+      setAuth(null);
+      // logout();
     }
   };
 

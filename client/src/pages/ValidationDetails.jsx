@@ -55,7 +55,7 @@ function ValidationDetails() {
         <AdminLinks />
         <section className="validation-details-section">
           <section className="validation-content">
-            <h2 className="profile-main-titles">Proposition</h2>
+            <h2>Proposition</h2>
             <img
               src={`${artUrl}/${pendingArt.image}`}
               alt="oeuvre en attente de validation"
@@ -107,7 +107,7 @@ function ValidationDetails() {
                 />
               </section>
               <section className="validation-content-comparison">
-                <h2 className="profile-main-titles">Oeuvres existantes</h2>
+                <h2>Oeuvres existantes</h2>
                 {exactMatches.map((art) => (
                   <article key={art.id}>
                     <img

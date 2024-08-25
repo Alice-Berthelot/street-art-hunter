@@ -19,10 +19,10 @@
   border-radius: 0.8125rem;
 }
 
-.user-list-h2 {
-  color: var(--third-color);
+.artlist-article h2 {
+  color: var(--secondary-color);
   text-align: center;
-  letter-spacing: 0.2rem;
+  margin: 2rem auto;
 }
 
 .user-list-ul {
@@ -99,11 +99,15 @@ tbody > tr > a {
     flex-direction: column;
   }
 
+  .user-list-table {
+    margin-bottom: 7rem;
+  }
+
   .user-list-ul {
     display: flex;
-    justify-content: space-evenly;
-    padding: 1.2rem 0 4rem 3rem;
-    min-width: 20rem;
+    justify-content: flex-start;
+    margin-left: 3rem;
+    gap: 2rem;
   }
 
   .user-list-th {

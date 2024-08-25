@@ -35,7 +35,7 @@ function AdminLinks() {
             isActive ? "admin-links-link-active" : "admin-links-link"
           }
         >
-          Gallerie
+          Galerie
         </NavLink>
         <NavLink
           to="/admin/validation"

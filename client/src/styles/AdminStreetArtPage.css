@@ -19,35 +19,19 @@
   border-radius: 0.8125rem;
 }
 
-.title-artgallery {
-  color: var(--third-color);
-  font-size: 2rem;
-  text-align: center;
-  margin: 1.5rem 0;
-  letter-spacing: 0.2rem;
-}
-
 .gallery-list {
-  width: 21rem;
-  padding: 2rem;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
   margin: auto;
 }
 
-.img {
-  margin-bottom: 2rem;
-}
-
-.image1,
-.image2,
-.image3,
-.image4,
-.image5,
-.image6,
-.image7,
-.image8,
-.image9,
-.image10 {
-  margin-bottom: 2rem;
+.gallery-list > li > img {
+  height: 10rem;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 768px) {
@@ -62,10 +46,6 @@
     padding-bottom: 0;
   }
 
-  .section-artgallery {
-    width: 80%;
-  }
-
   .artlist-article {
     width: 100%;
     margin-top: 3.5rem;
@@ -73,15 +53,20 @@
     padding-bottom: 0;
   }
 
+  .artlist-article h1 {
+    margin: 0 auto;
+  }
+
   .gallery-list {
     display: flex;
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(150px, 1fr));
-    grid-auto-rows: auto;
-    grid-column-gap: 1.5rem;
-    grid-row-gap: 1.5rem;
+    justify-content: center;
+    gap: 1rem;
     margin: 3rem auto;
-    width: 95%;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .gallery-list > li {
+    width: 20%;
   }
 }

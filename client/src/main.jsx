@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import AuthProtected from "./services/AuthProtected";
 import AdminProtected from "./services/AdminProtected";
+import decodeTokenAndExtractRole from "./services/decodeToken";
 import Register from "./pages/Register";
 import ProfileInfo from "./components/ProfileInfo";
 import ProfileContributions from "./components/ProfileContributions";
@@ -91,6 +92,9 @@ const router = createBrowserRouter([
             "POST"
           );
           if (response.status === 201) {
+            toast.success(
+              "Merci pour votre contribution. Celle-ci va être examinée par un administrateur."
+            );
             return redirect("/");
           }
           return null;
@@ -181,15 +185,35 @@ const router = createBrowserRouter([
         },
         action: async ({ params }) => {
           const token = getToken();
-          await fetch(
-            `${import.meta.env.VITE_API_URL}${baseUserUrl}${params.id}`,
-            {
-              method: "DELETE",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
+          const decodedToken = decodeTokenAndExtractRole(token);
+          const authId = decodedToken.id;
+          const authRole = decodedToken.role;
+          console.log("params.id", parseInt(params.id, 10));
+          console.log("authId", parseInt(authId, 10));
+          const response = await fetch(
+            await fetch(
+              `${import.meta.env.VITE_API_URL}${baseUserUrl}${params.id}`,
+              {
+                method: "DELETE",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            )
           );
+          // if (response.status === 204) {
+          if (
+            authRole !== 1 ||
+            (authRole === 1 && authId === parseInt(params.id, 10))
+          ) {
+            localStorage.removeItem("token");
+          }
+          toast.success("Le profil a bien été supprimé.");
+          // } else {
+          //   toast.error(
+          //     "Votre profil n'a pas pu être supprimé. Merci de nous contacter en utilisant le formulaire de contact."
+          //   );
+          // }
           return redirect("/");
         },
         children: [
@@ -198,7 +222,7 @@ const router = createBrowserRouter([
             element: <ProfileInfo />,
           },
           {
-            path: "delete",
+            path: "",
             element: <ProfileDelete />,
           },
           {

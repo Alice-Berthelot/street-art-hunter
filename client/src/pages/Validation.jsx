@@ -16,7 +16,7 @@ function Validation() {
         <BtnGoBack />
         <AdminLinks />
         <section className="validation-section">
-          <h2 className="validation-main-titles">Ajouts à valider</h2>
+          <h2>Ajouts à valider</h2>
           <figure>
             {pendingArts.map((art) => (
               <Link to={`/admin/validation/${art.id}`} key={art.id}>

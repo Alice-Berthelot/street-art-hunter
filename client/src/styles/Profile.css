@@ -305,7 +305,8 @@
   .profile-desktop-wrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     width: 95%;
   }
 
@@ -318,7 +319,7 @@
 
   .profile-points-section {
     width: 40%;
-    margin-top: 4rem;
+    margin: 4rem 1rem 6rem 1rem;
   }
 
   .profile-information-form > article:last-of-type {

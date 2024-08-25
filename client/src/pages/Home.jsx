@@ -17,12 +17,14 @@ import Map from "../components/Map";
 function Home() {
   const artData = useLoaderData();
 
-  const { setAuth } = useContext(CurrentUserContext);
+  const { auth, setAuth } = useContext(CurrentUserContext);
   const [position, setPosition] = useState([
     44.831271602173324, -0.5722962522737938,
   ]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedArt, setSelectedArt] = useState(null);
+
+  console.log("auth :", auth);
 
   const artIcon = new Icon({
     iconUrl: yellowMarker,

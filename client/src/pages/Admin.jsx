@@ -10,6 +10,7 @@ function Admin() {
     <section className="admin-section-wrapper">
       <article className="admin-article">
         <AdminLinks />
+        <h2>Statistiques</h2>
         <AdminStats countUsers={countUsers} countArts={countArts} />
       </article>
     </section>

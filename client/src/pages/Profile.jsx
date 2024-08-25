@@ -30,7 +30,7 @@ function Profile() {
     <section className="profile-section-wrapper">
       <article className="profile-article">
         <h1>
-          {auth?.id === parseInt(id)
+          {auth?.id === parseInt(id, 10)
             ? "MON PROFIL"
             : `PROFIL DE ${userData.username.toUpperCase()}`}
         </h1>
@@ -45,7 +45,7 @@ function Profile() {
                 onClick={handleOpenDeletion}
               >
                 Supprimer{" "}
-                {auth?.id === parseInt(id) ? "mon profil" : "le profil"}
+                {auth?.id === parseInt(id, 10) ? "mon profil" : "le profil"}
               </button>
             </article>
           </article>

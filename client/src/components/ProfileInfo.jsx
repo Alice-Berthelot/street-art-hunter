@@ -6,7 +6,7 @@ function ProfileInfo({ user, auth, id }) {
   return (
     <section className="profile-information-section">
       <h2 className="profile-subtitle">
-        {auth?.id === parseInt(id) ? "Mes informations" : "Informations"}
+        {auth?.id === parseInt(id, 10) ? "Mes informations" : "Informations"}
       </h2>
       <article className="profile-information-article">
         <p>Pseudo</p>
