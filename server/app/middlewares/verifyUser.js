@@ -19,7 +19,6 @@ const verifyUser = async (req, res, next) => {
     );
 
     if (verified) {
-      // Respond with the user in JSON format (without the hashed password)
       delete user.hashed_password;
 
       if (user.is_admin === 1) {

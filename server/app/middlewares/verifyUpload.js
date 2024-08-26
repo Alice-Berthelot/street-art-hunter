@@ -17,7 +17,7 @@ const handleFileUpload = (req, res, next) => {
     req.longitude = req.body.longitude;
 
     next();
-    return true; // peut-être supprimer ce code
+    return true; 
   });
 };
 

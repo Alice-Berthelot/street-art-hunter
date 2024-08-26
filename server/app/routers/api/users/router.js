@@ -18,9 +18,9 @@ const { authorizeProfileAccess } = require("../../../middlewares/authorizeProfil
 router.get("/", browse);
 router.get("/count", count);
 router.get("/rank", rank);
-router.put("/editpoint", editPoints);
+router.put("/editpoint", authorize, editPoints);
 router.get("/:id", read);
-router.put("/:id", edit);
+router.put("/:id", authorizeProfileAccess, edit);
 router.delete("/:id", authorizeProfileAccess, destroy);
 
 module.exports = router;

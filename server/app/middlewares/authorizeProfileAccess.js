@@ -16,7 +16,7 @@ const authorizeProfileAccess = (req, res, next) => {
     const profileId = parseInt(req.params.id);
 
     if (userRole === 1 || userId === profileId) {
-        console.log("l'utilisateur est autorisé à supprimer le profil");
+        console.log("L'utilisateur est autorisé à supprimer le profil");
       return next();
     }
 

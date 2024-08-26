@@ -21,7 +21,7 @@ router.get("/comparedArts", browseComparedArts);
 router.get("/gallery", browseGallery);
 router.get("/count", count);
 router.get("/:id", read);
-router.put("/:id", edit);
-router.delete("/:id", destroy);
+router.put("/:id", authorize, edit);
+router.delete("/:id", authorize, destroy);
 
 module.exports = router;

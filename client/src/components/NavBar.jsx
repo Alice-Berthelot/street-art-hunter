@@ -48,7 +48,9 @@ function NavBar() {
       <ul>
         <li>
           <NavLink className="navlink" to="/">
-            <figure className={selectedPage === "/" && "figure-navbar-active"}>
+            <figure
+              className={selectedPage === "/" ? "figure-navbar-active" : ""}
+            >
               <img src={homeIcon} alt="Accueil" className="icon-navbar" />
               <figcaption
                 className={
@@ -65,7 +67,9 @@ function NavBar() {
         <li>
           <NavLink className="navlink" to="/score">
             <figure
-              className={selectedPage === "/score" && "figure-navbar-active"}
+              className={
+                selectedPage === "/score" ? "figure-navbar-active" : ""
+              }
             >
               <img
                 src={trophyIcon}
@@ -109,10 +113,11 @@ function NavBar() {
           >
             <figure
               className={
-                (selectedPage === `/profile/${auth?.id}` ||
-                  selectedPage === `/profile/${auth?.id}/edit` ||
-                  selectedPage === "/login") &&
-                "figure-navbar-active"
+                selectedPage === `/profile/${auth?.id}` ||
+                selectedPage === `/profile/${auth?.id}/edit` ||
+                selectedPage === "/login"
+                  ? "figure-navbar-active"
+                  : ""
               }
             >
               <img

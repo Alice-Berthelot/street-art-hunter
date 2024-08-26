@@ -93,7 +93,7 @@ const router = createBrowserRouter([
           );
           if (response.status === 201) {
             toast.success(
-              "Merci pour votre contribution. Celle-ci va être examinée par un administrateur."
+              "Merci pour votre contribution. Celle-ci va être examinée par un administrateur. Si elle est validée, vous gagnerez des points !"
             );
             return redirect("/");
           }
