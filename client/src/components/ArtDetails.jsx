@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 
 function ArtDetails({ art, isOpen, handleCloseModal }) {
   const artUrl = import.meta.env.VITE_API_URL;
-  const imagePath = `${artUrl}/${art.image}`;
+  const imagePath = `${artUrl}${art.image}`;
   const dialog = useRef();
 
   useEffect(() => {
@@ -30,14 +30,14 @@ function ArtDetails({ art, isOpen, handleCloseModal }) {
       <article className="modal-content-artDetails">
         <img
           src={imagePath}
-          alt={art.title}
+          alt={art.title ? art.title : "oeuvre sélectionnée"}
           className="modal-picture-artDetails"
         />
-        <h2>
+        <h3>
           {art.title}
           {art.title && art.artist && " - "}
           {art.artist}
-        </h2>
+        </h3>
         <p className={art.information && "modal-artDetails-description"}>
           {art.information}
         </p>

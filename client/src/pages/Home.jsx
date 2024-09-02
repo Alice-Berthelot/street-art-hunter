@@ -24,8 +24,6 @@ function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedArt, setSelectedArt] = useState(null);
 
-  console.log("auth :", auth);
-
   const artIcon = new Icon({
     iconUrl: yellowMarker,
     iconSize: [38, 38],

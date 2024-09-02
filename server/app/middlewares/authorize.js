@@ -2,10 +2,10 @@ const jwt = require("jsonwebtoken");
 
 const authorize = (req, res, next) => {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
 
     if (!token) {
-      return res.status(401).json({ message: "Token inexistant" });
+      return res.sendStatus(401);
     }
 
     const decodedToken = jwt.verify(token, process.env.APP_SECRET);

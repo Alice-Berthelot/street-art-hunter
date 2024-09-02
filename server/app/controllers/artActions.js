@@ -60,10 +60,7 @@ const read = async (req, res, next) => {
 const edit = async (req, res, next) => {
   try {
     const art = req.body;
-    const result = await tables.art.update(art, req.params.id);
-    if (result == null) {
-      res.sendStatus(404).json({ message: "Art not found" });
-    }
+    await tables.art.update(art, req.params.id);
     res.sendStatus(204);
   } catch (err) {
     next(err);

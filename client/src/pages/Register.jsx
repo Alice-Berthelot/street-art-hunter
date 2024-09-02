@@ -59,7 +59,10 @@ function Register() {
       event.preventDefault();
       setErrors(newErrors);
     } else {
-      toast.success("Vous êtes inscrit(e).", {});
+      toast.success(
+        "Votre inscription a bien été prise en compte. Vous pouvez désormais vous connecter",
+        {}
+      );
     }
   };
 

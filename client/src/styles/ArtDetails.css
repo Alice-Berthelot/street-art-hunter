@@ -43,7 +43,7 @@
   padding: 0 1.5rem;
 }
 
-.modal-content-artDetails > h2 {
+.modal-content-artDetails > h3 {
   color: var(--third-color);
   font-size: 1.5rem;
 }
@@ -55,7 +55,6 @@
 
 .modal-artDetails-description {
   color: var(--secondary-color);
-  background-color: var(--primary-color);
   padding: 1rem;
   margin-bottom: 2rem;
   font-size: 1.25rem;

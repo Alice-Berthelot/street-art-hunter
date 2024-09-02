@@ -66,10 +66,9 @@ class UserRepository extends AbstractRepository {
 
   async updatePoints({ pointNumber, artId }) {
     const [result] = await this.database.query(
-      `update ${this.table} join picture as p on ${this.table}.id = p.user_id set  ${this.table}.point_number =  ${this.table}.point_number + ? where p.art_id = ?`,
+      `update ${this.table} join picture as p on ${this.table}.id = p.user_id set ${this.table}.point_number = ${this.table}.point_number + ? where p.art_id = ?`,
       [pointNumber, artId]
     );
-
     return result.affectedRows;
   }
 

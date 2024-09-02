@@ -19,7 +19,6 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
   const handleSubmit = () => {
     if (auth.role !== 1 || (auth.role === 1 && auth.id === parseInt(id, 10))) {
       setAuth(null);
-      // logout();
     }
   };
 

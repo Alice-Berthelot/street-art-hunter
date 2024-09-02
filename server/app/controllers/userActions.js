@@ -40,10 +40,7 @@ const edit = async (req, res, next) => {
 const editPoints = async (req, res, next) => {
   try {
     const { pointNumber, artId } = req.body;
-    const result = await tables.user.updatePoints({ pointNumber, artId });
-    if (result == null) {
-      res.sendStatus(404).json({ message: "Art or user not found" });
-    }
+    await tables.user.updatePoints({ pointNumber, artId });
     res.sendStatus(204);
   } catch (err) {
     next(err);

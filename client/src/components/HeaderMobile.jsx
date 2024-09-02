@@ -21,6 +21,7 @@ function HeaderMobile() {
           alt="Logo pour retourner à l'accueil"
           className="logo-mobile"
         />
+        //{" "}
       </Link>
       {auth?.id && (
         <Link to="/" onClick={handleLogout}>

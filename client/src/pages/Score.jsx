@@ -17,7 +17,7 @@ function Score() {
           <article className="podium-top3">
             {topThreeUsers.map((topThreeUser, index) => (
               <section className="podium-rank" key={topThreeUser.id}>
-                <p>{index + 1} </p>
+                <p>{index + 1}</p>
                 <p>{topThreeUser.username}</p>
                 <p>{topThreeUser.point_number} points</p>
               </section>

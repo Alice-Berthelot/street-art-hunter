@@ -1,18 +1,21 @@
 import { PropTypes } from "prop-types";
+import "../styles/ModalContent.css";
 
 function ModalContent({ onClose }) {
   return (
-    <section className="modal">
-      <button
-        type="button"
-        className="close-button"
-        onClick={onClose}
-        aria-label="fermer"
-      >
-        x
-      </button>
+    <section className="modal-welcome">
+      <header>
+        <button
+          type="button"
+          className="close-button"
+          onClick={onClose}
+          aria-label="fermer"
+        >
+          x
+        </button>
+      </header>
       <h2>Bienvenue !</h2>
-      <section className="section2">
+      <section>
         <p>
           Avec Street Art Hunter, partez à la chasse aux œuvres d’art urbaines.
         </p>

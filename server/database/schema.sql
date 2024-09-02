@@ -41,5 +41,5 @@ create table art_artist (
   foreign key(artist_id) references artist(id)
 );
 
-INSERT INTO user (username, city, email, hashed_password, point_number, is_Admin, registration_date) VALUES
-('Alice Admin', 'Bordeaux', 'aliceberthelot.pro@gmail.com', '$argon2id$v=19$m=19456,t=2,p=1$BV2MSsl8RXsEsC5RMeM81w$BHXHDPpzJxr1T9Dy0NH8Df0KX5cfbS/oRaf76lzfIEg', 0, 1, '2024-07-23');
+INSERT INTO user (username, city, email, hashed_password, point_number, is_admin, registration_date) VALUES
+('alice_admin', 'Bordeaux', 'aliceberthelot.pro@gmail.com', '$argon2id$v=19$m=19456,t=2,p=1$BV2MSsl8RXsEsC5RMeM81w$BHXHDPpzJxr1T9Dy0NH8Df0KX5cfbS/oRaf76lzfIEg', 0, 1, '2024-07-23');

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -27,7 +27,6 @@ import {
   baseRegisterUrl,
   baseArtUrl,
   baseUserUrl,
-  basePictureUrl,
   baseUploadUrl,
   baseAcceptedArtUrl,
 } from "./services/url";
@@ -48,11 +47,11 @@ const router = createBrowserRouter([
   {
     element: <App />,
     loader: async () => {
-      const [users, pictures] = await Promise.all([
+      const [users, arts] = await Promise.all([
         fetchApi(`${baseUserUrl}`),
         fetchApi(`${baseArtUrl}gallery`),
       ]);
-      return { users, pictures };
+      return { users, arts };
     },
     children: [
       {
@@ -188,20 +187,16 @@ const router = createBrowserRouter([
           const decodedToken = decodeTokenAndExtractRole(token);
           const authId = decodedToken.id;
           const authRole = decodedToken.role;
-          console.log("params.id", parseInt(params.id, 10));
-          console.log("authId", parseInt(authId, 10));
-          const response = await fetch(
-            await fetch(
-              `${import.meta.env.VITE_API_URL}${baseUserUrl}${params.id}`,
-              {
-                method: "DELETE",
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            )
+
+          await fetch(
+            `${import.meta.env.VITE_API_URL}${baseUserUrl}${params.id}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
           );
-          // if (response.status === 204) {
           if (
             authRole !== 1 ||
             (authRole === 1 && authId === parseInt(params.id, 10))
@@ -209,11 +204,6 @@ const router = createBrowserRouter([
             localStorage.removeItem("token");
           }
           toast.success("Le profil a bien été supprimé.");
-          // } else {
-          //   toast.error(
-          //     "Votre profil n'a pas pu être supprimé. Merci de nous contacter en utilisant le formulaire de contact."
-          //   );
-          // }
           return redirect("/");
         },
         children: [

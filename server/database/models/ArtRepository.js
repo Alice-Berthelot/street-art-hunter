@@ -17,7 +17,12 @@ class ArtRepository extends AbstractRepository {
 
   async readAccepted() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id WHERE ${this.table}.status = 'accepted'`
+      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image, a.name as artist
+      FROM ${this.table}
+      JOIN picture as p ON p.art_id=${this.table}.id
+      LEFT JOIN art_artist as aa on aa.art_id=${this.table}.id
+      LEFT JOIN artist as a on a.id=aa.artist_id
+      WHERE ${this.table}.status = 'accepted'`
     );
     return rows;
   }
