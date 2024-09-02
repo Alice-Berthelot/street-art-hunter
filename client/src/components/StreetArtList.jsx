@@ -5,7 +5,7 @@ import AdminLinks from "./AdminLinks";
 import GalleryDetails from "./GalleryDetails";
 
 function StreetArtList({
-  pictures,
+  arts,
   selectedArt,
   setSelectedArt,
   isOpen,
@@ -24,17 +24,17 @@ function StreetArtList({
         <AdminLinks />
         <h2>Oeuvres présentes sur l'application</h2>
         <ul className="gallery-list">
-          {pictures.map((picture) => (
+          {arts.map((art) => (
             <li
-              key={picture.id}
+              key={art.id}
               onClick={() => {
-                setSelectedArt(picture);
+                setSelectedArt(art);
                 handleOpenModal();
               }}
             >
               <img
-                src={`${artUrl}/${picture.image}`}
-                alt={`oeuvre d'art ${picture.id}`}
+                src={`${artUrl}/${art.image}`}
+                alt={`oeuvre d'art ${art.id}`}
               />
             </li>
           ))}

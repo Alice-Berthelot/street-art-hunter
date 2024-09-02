@@ -3,20 +3,20 @@ const { database, tables } = require("../config");
 
 // Import repository classes
 const AbstractRepository = require("../../database/models/AbstractRepository");
-const ItemRepository = require("../../database/models/ItemRepository");
+const UserRepository = require("../../database/models/UserRepository");
 
 // Test suite for ItemRepository
-describe("ItemRepository", () => {
+describe("UserRepository", () => {
   // Test: Check if ItemRepository extends AbstractRepository
-  test("ItemRepository extends AbstractRepository", async () => {
+  test("UserRepository extends AbstractRepository", async () => {
     // Assertions
-    expect(Object.getPrototypeOf(ItemRepository)).toBe(AbstractRepository);
+    expect(Object.getPrototypeOf(UserRepository)).toBe(AbstractRepository);
   });
 
   // Test: Check if tables.item is an instance of ItemRepository
-  test("tables.item = new ItemRepository", async () => {
+  test("tables.item = new UserRepository", async () => {
     // Assertions
-    expect(tables.item instanceof ItemRepository).toBe(true);
+    expect(tables.item instanceof UserRepository).toBe(true);
   });
 
   // Test: Check if create method inserts data into the 'item' table
@@ -28,15 +28,15 @@ describe("ItemRepository", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake item data
-    const fakeItem = { title: "foo", user_id: 0 };
+    const fakeUser = { username: "fakeUser", id: 1 };
 
     // Call the create method of the item repository
-    const returned = await tables.item.create(fakeItem);
+    const returned = await tables.user.create(fakeUser);
 
     // Assertions
     expect(database.query).toHaveBeenCalledWith(
-      "insert into item (title, user_id) values (?, ?)",
-      [fakeItem.title, fakeItem.user_id]
+      "insert into user (username, id) values (?, ?)",
+      [fakeItem.username, fakeItem.id]
     );
     expect(returned).toBe(result.insertId);
   });

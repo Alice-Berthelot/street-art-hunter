@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import StreetArtList from "../components/StreetArtList";
 
 function AdminStreetArtPage() {
-  const { pictures } = useOutletContext();
+  const { arts } = useOutletContext();
   const [selectedArt, setSelectedArt] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +27,7 @@ function AdminStreetArtPage() {
   return (
     <section className="Admin-Street-Art">
       <StreetArtList
-        pictures={pictures}
+        arts={arts}
         selectedArt={selectedArt}
         setSelectedArt={setSelectedArt}
         isOpen={isOpen}
