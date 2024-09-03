@@ -23,7 +23,7 @@
 
 ::placeholder {
   color: var(--secondary-color);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .leaflet-touch .leaflet-control-geocoder-icon {
@@ -48,10 +48,5 @@
 
   .leaflet-left {
     top: 78%;
-  }
-
-  ::placeholder {
-    color: var(--secondary-color);
-    font-size: 1rem;
   }
 }

@@ -1,7 +1,7 @@
 import { Form, Link, useOutletContext } from "react-router-dom";
 import "../styles/RegisterLogin.css";
 import { useRef, useState } from "react";
-import mockupImg from "../assets/images/mockup2.png";
+import ImgRegisterForm from "../assets/images/gorille_register.jpg";
 import { toast } from "react-toastify";
 
 function Register() {
@@ -69,7 +69,7 @@ function Register() {
   return (
     <section className="registerAndLoginForm ">
       <Form method="POST" onSubmit={handleSubmit} className="form-register">
-        <h2>Inscription</h2>
+        <h1>INSCRIPTION</h1>
         <label htmlFor="username">
           Pseudonyme
           <input
@@ -147,11 +147,9 @@ function Register() {
           </Link>
         </p>
       </Form>
-
       <img
-        src={mockupImg}
-        alt="Mockups de l'application"
-        className="imgMockup"
+        src={ImgRegisterForm}
+        alt="oeuvre d'art représentant une femme sur un mur coloré"
       />
     </section>
   );

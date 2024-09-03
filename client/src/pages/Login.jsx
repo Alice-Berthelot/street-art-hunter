@@ -1,6 +1,6 @@
 import { Form, Link, useActionData } from "react-router-dom";
 import "../styles/RegisterLogin.css";
-import ImgMockUp from "../assets/images/mockup2.png";
+import ImgLoginForm from "../assets/images/renard.jpg";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -13,7 +13,7 @@ function Login() {
   return (
     <section className="registerAndLoginForm">
       <Form method="post" className="form-login">
-        <h2>Connexion</h2>
+        <h1>CONNEXION</h1>
 
         <label htmlFor="email">
           E-mail
@@ -52,11 +52,9 @@ function Login() {
           </Link>
         </p>
       </Form>
-
       <img
-        src={ImgMockUp}
-        alt="Aperçu de l'application en version mobile"
-        className="imgMockup"
+        src={ImgLoginForm}
+        alt="oeuvre d'art représentant une femme sur un mur coloré"
       />
     </section>
   );

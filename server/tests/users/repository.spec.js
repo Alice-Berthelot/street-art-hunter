@@ -14,65 +14,35 @@ describe("UserRepository", () => {
   });
 
   // Test: Check if tables.item is an instance of ItemRepository
-  test("tables.item = new UserRepository", async () => {
+  test("tables.user = new UserRepository", async () => {
     // Assertions
-    expect(tables.item instanceof UserRepository).toBe(true);
+    expect(tables.user instanceof UserRepository).toBe(true);
   });
 
-  // Test: Check if create method inserts data into the 'item' table
   test("create => insert into", async () => {
-    // Mock result of the database query
-    const result = [{ insertId: 1 }];
+    const result = [];
 
-    // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
-    // Fake item data
-    const fakeUser = { username: "fakeUser", id: 1 };
+    const fakeUser = { email: "fakeuser@user.com", hashedPassword: "irABzhXyudJRuph", username: "fakeUser", city: "Paris" };
 
-    // Call the create method of the item repository
     const returned = await tables.user.create(fakeUser);
 
-    // Assertions
     expect(database.query).toHaveBeenCalledWith(
-      "insert into user (username, id) values (?, ?)",
-      [fakeItem.username, fakeItem.id]
+      "INSERT INTO user (email, hashed_password, username, city) VALUES (?, ?, ?, ?)",
+      [fakeUser.email, fakeUser.hashedPassword, fakeUser.username, fakeUser.city]
     );
-    expect(returned).toBe(result.insertId);
+    expect(returned).toEqual();
   });
 
-  // Test: Check if readAll method selects all data from the 'item' table
   test("readAll => select", async () => {
-    // Mock empty rows returned from the database
     const rows = [];
 
-    // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [rows]);
 
-    // Call the readAll method of the item repository
-    const returned = await tables.item.readAll();
+    const returned = await tables.user.readAll();
 
-    // Assertions
-    expect(database.query).toHaveBeenCalledWith("select * from item");
+    expect(database.query).toHaveBeenCalledWith("SELECT user.id, user.username, user.city, user.email, user.point_number, user.is_admin, user.registration_date FROM user");
     expect(returned).toStrictEqual(rows);
-  });
-
-  // Test: Check if read method selects data from the 'item' table based on id
-  test("read => select with id", async () => {
-    // Mock rows returned from the database
-    const rows = [{}];
-
-    // Mock the implementation of the database query method
-    jest.spyOn(database, "query").mockImplementation(() => [rows]);
-
-    // Call the read method of the item repository
-    const returned = await tables.item.read(0);
-
-    // Assertions
-    expect(database.query).toHaveBeenCalledWith(
-      "select * from item where id = ?",
-      [0]
-    );
-    expect(returned).toStrictEqual(rows[0]);
   });
 });

@@ -12,10 +12,17 @@
 }
 
 .registerAndLoginForm .form-register {
-  background-color: var(--fourth-color);
   width: 98%;
+  background-color: var(--fourth-color);
   margin-top: 3.2rem;
-  padding: 0 1rem;
+  border: 1px solid var(--fifth-color);
+  border-radius: 0.8125rem;
+}
+
+.registerAndLoginForm .form-login {
+  width: 98%;
+  background-color: var(--fourth-color);
+  margin-top: 3.2rem;
   border: 1px solid var(--fifth-color);
   border-radius: 0.8125rem;
   display: flex;
@@ -23,33 +30,20 @@
   align-items: center;
 }
 
-.registerAndLoginForm .form-login {
-  background-color: var(--fourth-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10rem 0rem;
-  padding: 0rem 2rem;
-  border: 4px solid var(--secondary-color);
-  border-radius: 0.8125rem;
+.registerAndLoginForm Form h1 {
+  margin: 0 auto;
 }
 
-.registerAndLoginForm Form h2 {
-  font-size: 2.4rem;
-  margin: 1rem 0;
-  color: var(--third-color);
-  text-align: center;
-  font-family: var(--font-content);
-  letter-spacing: 0.2rem;
+.registerAndLoginForm .form-login label:first-of-type {
+  margin: 5rem auto 2rem auto;
 }
 
 .registerAndLoginForm Form label {
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
-  margin: 0.5rem 0;
-  width: 100%;
+  margin: 0.5rem auto;
+  width: 90%;
   padding: 0.5rem;
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -73,10 +67,12 @@
   border: none;
   background-color: var(--fourth-color);
   color: var(--secondary-color);
+  font-size: 1.2rem;
 }
 
 .registerAndLoginForm Form input::placeholder {
   opacity: 0.5;
+  font-size: 1.2rem;
 }
 
 .registerAndLoginForm Form label:nth-child(7) {
@@ -115,17 +111,27 @@
   letter-spacing: 0.1rem;
 }
 
+.registerAndLoginForm .form-login button {
+  margin-top: 5rem;
+}
+
+.registerAndLoginForm .form-login p {
+  margin-top: 3rem;
+}
+
 .registerAndLoginForm Form p {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   gap: 0.5rem;
 }
 
 .registerAndLoginForm Form a {
-  color: var(--third-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .registerAndLoginForm Form .errorsForm {
@@ -142,43 +148,59 @@
   height: 1rem;
 }
 
+.registerAndLoginForm .form-register label:last-of-type {
+  font-size: 0.9rem;
+}
+
+.registerAndLoginForm img {
+  display: none;
+}
+
+.registerAndLoginForm p:last-of-type {
+  margin: 2rem 0;
+}
+
 @media (min-width: 768px) {
   .registerAndLoginForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    background-image: none;
+    min-height: auto;
     padding-bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .imgMockup {
+  /* .imgMockup {
     display: block;
     width: clamp(30vw, 40vw, 50vw);
-  }
+  } */
 
+  .registerAndLoginForm .form-login,
   .registerAndLoginForm .form-register {
-    min-width: 20rem;
-    max-width: 25rem;
-    background-color: var(--fourth-color);
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 4px solid var(--secondary-color);
-    border-radius: 0.8125rem;
-  }
-
-  .registerAndLoginForm .form-login {
-    background-color: var(--fourth-color);
-    padding: 4rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 4px solid var(--secondary-color);
-    border-radius: 0.8125rem;
-  }
-
-  .registerAndLoginForm Form label {
     width: 100%;
+    margin-top: 3.5rem;
+    border: none;
+    border-radius: 0;
+    display: block;
+  }
+
+  .registerAndLoginForm .form-login label,
+  .registerAndLoginForm .form-register label {
+    width: 70%;
+  }
+
+  .registerAndLoginForm .form-login label:last-of-type {
+    margin: auto;
+  }
+
+  .registerAndLoginForm img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .registerAndLoginForm .form-register label:last-of-type {
+    margin: 1rem auto;
   }
 }

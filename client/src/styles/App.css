@@ -45,6 +45,7 @@ h1 {
 .Toastify__toast {
   border-radius: 10px;
   text-decoration: none;
+  top: 3rem;
 }
 
 .Toastify__toast--success {

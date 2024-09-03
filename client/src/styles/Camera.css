@@ -19,13 +19,22 @@
   border-radius: 0.8125rem;
 }
 
+.camera-article > p:first-of-type {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  font-style: italic;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
 .camera-main-title {
-  background-position: 4rem center;
+  background-position: 1rem center;
   width: 100%;
 }
 
 .camera-modal {
-  padding: 5rem 1rem;
+  padding: 3rem 1rem;
   border-radius: 0.5rem;
 }
 
@@ -157,7 +166,7 @@ Form .info-section {
 Form .info-section p {
   font-size: 1.2rem;
   text-align: center;
-  color: var(--third-color);
+  color: var(--secondary-color);
   font-weight: 800;
 }
 

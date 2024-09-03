@@ -72,15 +72,6 @@ class UserRepository extends AbstractRepository {
     return result.affectedRows;
   }
 
-  // async delete(userId) {
-  //   await this.pictureRepository.deleteByUserId(userId);
-  //   const [result] = await this.database.query(
-  //     `DELETE FROM ${this.table} WHERE id = ?`,
-  //     [userId]
-  //   );
-  //   return result.affectedRows;
-  // }
-
   async delete(userId) {
     await this.database.query("START TRANSACTION");
     try {
