@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import StreetArtList from "../components/StreetArtList";
@@ -40,14 +39,5 @@ function AdminStreetArtPage() {
     </section>
   );
 }
-
-StreetArtList.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      src: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
 
 export default AdminStreetArtPage;

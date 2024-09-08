@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 import ProfileInfo from "../components/ProfileInfo";
@@ -6,6 +6,7 @@ import ProfilePoints from "../components/ProfilePoints";
 import ProfileDelete from "../components/ProfileDelete";
 import "../styles/Profile.css";
 import ProfileContributions from "../components/ProfileContributions";
+import BtnGoBack from "../components/BtnGoBack";
 
 function Profile() {
   const { auth, logout } = useContext(CurrentUserContext);
@@ -29,7 +30,13 @@ function Profile() {
   return (
     <section className="profile-section-wrapper">
       <article className="profile-article">
-        <h1>
+        {auth?.id !== parseInt(id, 10) && <BtnGoBack />}
+        {/* The profile titles and subtitles vary based on whether the authenticated user is the profile owner or an admin. */}
+        <h1
+          className={
+            auth?.id === parseInt(id, 10) ? "" : "profile-main-title-long"
+          }
+        >
           {auth?.id === parseInt(id, 10)
             ? "MON PROFIL"
             : `PROFIL DE ${userData.username.toUpperCase()}`}
@@ -40,7 +47,6 @@ function Profile() {
             <article className="profile-delete-button-wrapper">
               <button
                 type="submit"
-                aria-label="Supprimer le profil"
                 className="profile-delete-button"
                 onClick={handleOpenDeletion}
               >

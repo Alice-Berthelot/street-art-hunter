@@ -13,7 +13,6 @@ function Validation() {
   return (
     <section className="validation-section-wrapper">
       <article className="validation-article">
-        <BtnGoBack />
         <AdminLinks />
         <section className="validation-section">
           <h2>Ajouts à valider</h2>

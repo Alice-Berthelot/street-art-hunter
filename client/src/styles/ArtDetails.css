@@ -1,10 +1,11 @@
-.modal-artDetails {
+.modal-art-details {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   top: 10%;
   bottom: 6rem;
   width: 98%;
+  height: 35rem;
   background-color: var(--fourth-color);
   border: 2.5px solid var(--fifth-color);
   border-radius: 0.9375rem;
@@ -14,12 +15,12 @@
   scrollbar-color: var(--third-color) var(--third-color);
 }
 
-.modal-artDetails > header {
+.modal-art-details > header {
   display: flex;
   justify-content: flex-end;
 }
 
-.close-artDetails {
+.close-art-details {
   font-family: var(--primary-font);
   font-size: 1.5rem;
   color: var(--secondary-color);
@@ -29,31 +30,32 @@
   margin: 1rem 0;
 }
 
-.close-artDetails:hover {
+.close-art-details:hover {
   color: var(--third-color);
   cursor: pointer;
 }
 
-.modal-content-artDetails {
+.modal-content-art-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 0 1.5rem;
+  color: var(--secondary-color);
 }
 
-.modal-content-artDetails > h3 {
-  color: var(--third-color);
+.modal-content-art-details > h3 {
   font-size: 1.5rem;
+  text-align: center;
 }
 
-.modal-picture-artDetails {
+.modal-picture-art-details {
   width: 20rem;
   object-fit: cover;
 }
 
-.modal-artDetails-description {
+.modal-art-details-description {
   color: var(--secondary-color);
   padding: 1rem;
   margin-bottom: 2rem;
@@ -61,7 +63,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal-artDetails {
+  .modal-art-details {
     top: 5.5rem;
     left: 0.2rem;
     bottom: 10rem;

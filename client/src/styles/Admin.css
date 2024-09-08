@@ -19,7 +19,7 @@
   border-radius: 0.8125rem;
 }
 
-.admin-article > h1 {
+.admin-main-title {
   width: 100%;
 }
 
@@ -132,7 +132,7 @@
     justify-content: center;
   }
 
-  .admin-article > h1 {
+  .admin-main-title {
     width: 20rem;
   }
 

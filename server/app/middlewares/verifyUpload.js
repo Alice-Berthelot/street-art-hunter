@@ -7,7 +7,6 @@ const handleFileUpload = (req, res, next) => {
 
   fs.rename(req.file.path, newPath, (err) => {
     if (err) {
-      console.error("Error moving file:", err);
       return next(err);
     }
 

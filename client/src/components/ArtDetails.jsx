@@ -4,9 +4,10 @@ import { PropTypes } from "prop-types";
 
 function ArtDetails({ art, isOpen, handleCloseModal }) {
   const artUrl = import.meta.env.VITE_API_URL;
-  const imagePath = `${artUrl}${art.image}`;
+  const imagePath = `${artUrl}/${art.image}`;
   const dialog = useRef();
 
+  // The showModal() and close() methods are linked to the dialog tag
   useEffect(() => {
     if (isOpen) {
       dialog.current?.showModal();
@@ -16,29 +17,29 @@ function ArtDetails({ art, isOpen, handleCloseModal }) {
   }, [isOpen]);
 
   return (
-    <dialog className="modal-artDetails" ref={dialog}>
+    <dialog className="modal-art-details" ref={dialog}>
       <header>
         <button
           type="button"
           aria-label="Fermer la fenêtre"
           onClick={handleCloseModal}
-          className="close-artDetails"
+          className="close-art-details"
         >
           X
         </button>
       </header>
-      <article className="modal-content-artDetails">
+      <article className="modal-content-art-details">
         <img
           src={imagePath}
           alt={art.title ? art.title : "oeuvre sélectionnée"}
-          className="modal-picture-artDetails"
+          className="modal-picture-art-details"
         />
         <h3>
-          {art.title}
+          {art.title && art.title.toUpperCase()}
           {art.title && art.artist && " - "}
           {art.artist}
         </h3>
-        <p className={art.information && "modal-artDetails-description"}>
+        <p className={art.information && "modal-art-details-description"}>
           {art.information}
         </p>
       </article>
@@ -55,7 +56,8 @@ ArtDetails.propTypes = {
     latitude: PropTypes.string,
     longitude: PropTypes.string,
   }).isRequired,
-  onClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
 };
 
 ArtDetails.defaultProps = {

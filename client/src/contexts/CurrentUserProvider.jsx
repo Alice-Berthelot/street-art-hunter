@@ -21,6 +21,24 @@ export function CurrentUserProvider({ children }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (auth && auth.exp) {
+      const expirationTime = auth.exp * 1000 - Date.now();
+      if (expirationTime > 0) {
+        const timer = setTimeout(() => {
+          setAuth(null);
+          localStorage.removeItem("token");
+          toast.warning("Votre session a expiré.");
+        }, expirationTime);
+        return () => clearTimeout(timer);
+      } else {
+        setAuth(null);
+        localStorage.removeItem("token");
+        toast.warning("Votre session a expiré.");
+      }
+    }
+  }, [auth]);
+
   const logout = () => {
     setAuth(null);
     localStorage.removeItem("token");

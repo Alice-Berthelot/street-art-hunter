@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
+// Component to protect routes by ensuring access is only granted to admins
 export default function AdminProtected({ children }) {
   const navigate = useNavigate();
   const { auth } = useContext(CurrentUserContext);

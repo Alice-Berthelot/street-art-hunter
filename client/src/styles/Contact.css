@@ -20,27 +20,22 @@
 }
 
 .contact-form-title {
-  width: 10rem;
+  width: 50%;
 }
 
 .contact-form-list {
   list-style: none;
-  margin: 0 auto 2rem auto;
+  margin: 1rem auto 2rem auto;
   max-width: 21rem;
   background-color: var(--primary-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1.25rem;
   border-radius: 0.7rem;
+  color: var(--secondary-color);
 }
 
-.contact-form-header {
-  text-align: center;
-  margin-bottom: 1.25rem;
-}
-
-.form-fields {
-  list-style: none;
-  padding: 0;
+.contact-form-list > input {
+  color: var(--secondary-color);
 }
 
 .form-group {
@@ -135,6 +130,10 @@
     display: block;
   }
 
+  .contact-form-title {
+    width: 35%;
+  }
+
   .contact-section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -146,15 +145,7 @@
   }
 
   .contact-form-list {
-    margin: auto;
-  }
-
-  .button-back {
-    display: none;
-  }
-
-  .contact-form-h2 {
-    margin: 7rem auto 5rem;
+    margin: 1rem auto;
   }
 
   .submit-btn {

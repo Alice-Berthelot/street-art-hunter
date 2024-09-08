@@ -5,24 +5,20 @@ const path = require("path");
 class ArtRepository extends AbstractRepository {
   constructor() {
     super({ table: "art" });
+    // Directory for user-uploaded images
     this.uploadDir = path.join(__dirname, "/../../public/assets/images/upload");
   }
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id`
+      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image, a.name as artist FROM ${this.table} FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id LEFT JOIN art_artist as aa on aa.art_id=${this.table}.id LEFT JOIN artist as a on a.id=aa.artist_id`
     );
     return rows;
   }
 
   async readAccepted() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image, a.name as artist
-      FROM ${this.table}
-      JOIN picture as p ON p.art_id=${this.table}.id
-      LEFT JOIN art_artist as aa on aa.art_id=${this.table}.id
-      LEFT JOIN artist as a on a.id=aa.artist_id
-      WHERE ${this.table}.status = 'accepted'`
+      `SELECT ${this.table}.id, ${this.table}.latitude, ${this.table}.longitude, ${this.table}.title, ${this.table}.information, p.image, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id LEFT JOIN art_artist as aa on aa.art_id=${this.table}.id LEFT JOIN artist as a on a.id=aa.artist_id WHERE ${this.table}.status = 'accepted'`
     );
     return rows;
   }
@@ -37,7 +33,7 @@ class ArtRepository extends AbstractRepository {
 
   async readGallery() {
     const [rows] = await this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.title, ${this.table}.information, ${this.table}.upload_date, ${this.table}.status, p.image, u.username FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id JOIN user as u ON p.user_id=u.id`
+      `SELECT ${this.table}.id, ${this.table}.title, ${this.table}.information, ${this.table}.upload_date, ${this.table}.status, p.image, u.username, a.name as artist FROM ${this.table} JOIN picture as p ON p.art_id=${this.table}.id JOIN user as u ON p.user_id=u.id LEFT JOIN art_artist as aa on aa.art_id=${this.table}.id LEFT JOIN artist as a on a.id=aa.artist_id`
     );
     return rows;
   }
@@ -50,9 +46,10 @@ class ArtRepository extends AbstractRepository {
     return rows;
   }
 
+  // Retrieve the total number of arts and those added in the past 7 days
   async readTotalArts() {
     const [rows] = await this.database.query(
-      `SELECT count(*) as totalArts, sum(CASE WHEN upload_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN 1 ELSE 0 END) AS recentArts FROM ${this.table}`
+      `SELECT count(*) as totalArts, CAST(sum(CASE WHEN upload_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN 1 ELSE 0 END)AS UNSIGNED) AS recentArts FROM ${this.table}`
     );
     return rows[0];
   }
@@ -74,14 +71,6 @@ class ArtRepository extends AbstractRepository {
     return result.affectedRows;
   }
 
-  // async deleteByUserId(userId) {
-  //   const [result] = await this.database.query(
-  //     `DELETE FROM ${this.table} LEFT JOIN picture as p on p.art_id=${this.table}.id WHERE p.user_id = ?`,
-  //     [userId]
-  //   );
-  //   return result.affectedRows;
-  // }
-
   async delete(id) {
     try {
       const [picture] = await this.database.query(
@@ -91,6 +80,7 @@ class ArtRepository extends AbstractRepository {
 
       const pictureName = picture[0].image;
 
+      // Delete picture files
       const filePath = path.join(this.uploadDir, pictureName);
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);

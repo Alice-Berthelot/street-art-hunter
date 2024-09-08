@@ -13,23 +13,17 @@ class PictureSeeder extends AbstractSeeder {
 
   run() {
     const images = [
-      { image: "/image_1.jpg" },
-      { image: "/image_2.jpg" },
-      { image: "/image_3.jpg" },
-      { image: "/image_4.jpg" },
-      { image: "/image_5.jpg" },
+      { image: "image_1.jpg" },
+      { image: "image_2.jpg" },
+      { image: "image_3.jpg" },
+      { image: "image_4.jpg" },
+      { image: "image_5.jpg" },
+      { image: "image_6.jpg" },
     ];
 
     images.forEach((image, index) => {
       const userRef = this.getRef(`user_${index}`);
-      const artRef = this.getRef(`art_fixed_${index}`);
-
-      if (!userRef || !artRef) {
-        console.error(
-          `Missing reference for user_${index} or art_fixed_${index}`
-        );
-        return;
-      }
+      const artRef = this.getRef(`art_${index}`);
 
       const imageWithRefName = {
         ...image,

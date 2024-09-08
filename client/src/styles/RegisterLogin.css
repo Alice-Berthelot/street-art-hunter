@@ -136,7 +136,7 @@
 
 .registerAndLoginForm Form .errorsForm {
   color: red;
-  font-weight: lighter;
+  font-weight: 400;
 }
 
 .imgMockup {

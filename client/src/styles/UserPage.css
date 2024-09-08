@@ -58,7 +58,11 @@
   border-spacing: 0;
 }
 
-tbody > tr > a {
+.user-list-table > thead {
+  text-align: center;
+}
+
+tbody > tr > td > a {
   color: var(--secondary-color);
   text-decoration: underline;
 }

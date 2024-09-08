@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import LeafletGeocoder from "../components/LeafletGeocoder";
 import ZoomControl from "../components/ZoomControl";
 import ArtPins from "../components/ArtPins";
@@ -23,6 +24,7 @@ function Map({
       }
     });
   }, []);
+
   return (
     <MapContainer
       center={position}
@@ -47,5 +49,24 @@ function Map({
     </MapContainer>
   );
 }
+
+Map.propTypes = {
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setPosition: PropTypes.func.isRequired,
+  artData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      artist: PropTypes.string,
+      information: PropTypes.string,
+      upload_date: PropTypes.string,
+      username: PropTypes.string,
+    })
+  ).isRequired,
+  geolocationIcon: PropTypes.object.isRequired,
+  artIcon: PropTypes.object.isRequired,
+  handleOpenModal: PropTypes.func.isRequired,
+};
 
 export default Map;

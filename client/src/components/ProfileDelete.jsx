@@ -4,10 +4,11 @@ import { useContext, useEffect, useRef } from "react";
 import { TfiHandStop } from "react-icons/tfi";
 import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
-function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
+function ProfileDelete({ isOpen, handleClose, auth, id }) {
   const dialog = useRef();
   const { setAuth } = useContext(CurrentUserContext);
 
+  // The showModal() and close() methods are linked to the dialog tag
   useEffect(() => {
     if (isOpen) {
       dialog.current?.showModal();
@@ -69,11 +70,13 @@ function ProfileDelete({ isOpen, handleClose, auth, logout, id }) {
 }
 
 ProfileDelete.propTypes = {
-  onClose: PropTypes.func,
-};
-
-ProfileDelete.defaultProps = {
-  onClose: () => {},
+  isOpen: PropTypes.bool,
+  handleClose: PropTypes.func,
+  auth: PropTypes.shape({
+    id: PropTypes.number,
+    role: PropTypes.number,
+  }),
+  id: PropTypes.string,
 };
 
 export default ProfileDelete;

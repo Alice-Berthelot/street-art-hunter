@@ -5,27 +5,25 @@ function ModalContent({ onClose }) {
   return (
     <section className="modal-welcome">
       <header>
-        <button
-          type="button"
-          className="close-button"
-          onClick={onClose}
-          aria-label="fermer"
-        >
+        <button type="button" onClick={onClose} aria-label="fermer la fenêtre">
           x
         </button>
       </header>
-      <h2>Bienvenue !</h2>
-      <section>
+      <article>
+        <h2>Bienvenue !</h2>
         <p>
-          Avec Street Art Hunter, partez à la chasse aux œuvres d’art urbaines.
+          Avec Street Art Hunter, partez à la chasse aux œuvres d’art urbaines !
         </p>
         <p>
-          Photographiez de nouvelles œuvres d’art à partir de votre téléphone
-          pour gagner des points : cliquez sur l’appareil photo et laissez-vous
-          guider.
+          Parcourez la carte à la recherche d'oeuvres de street art situées
+          autour de vous et contribuez à l'enrichissement de l'application en
+          ajoutant vos propres découvertes. Si vous êtes inscrit, vous pouvez
+          capturer des photos directement depuis l'application mobile en
+          cliquant sur l'icône appareil photo. Vous pourrez ainsi gagner des
+          points et vous mesurer aux autres chasseurs.
         </p>
         <p>Explorez, découvrez et amusez-vous!</p>
-      </section>
+      </article>
     </section>
   );
 }

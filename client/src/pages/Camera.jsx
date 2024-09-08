@@ -65,7 +65,7 @@ function Camera() {
           <section className="webcam-container">
             {image ? (
               <>
-                <img src={image} alt="Captured" className="captured-image" />
+                <img src={image} alt="photo prise" className="captured-image" />
                 <input type="hidden" name="pictureTaken" value={image} />
                 <input type="hidden" name="userId" value={auth.id} />
                 <input type="hidden" name="latitude" value={latitude} />

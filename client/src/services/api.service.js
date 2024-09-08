@@ -1,8 +1,5 @@
-import { getToken } from "./getToken";
-
-const token = getToken();
-
 export async function fetchApi(url) {
+  const token = localStorage.getItem("token");
   try {
     const response = await fetch(import.meta.env.VITE_API_URL + url, {
       headers: {
@@ -23,11 +20,11 @@ export async function sendData(url, data, http) {
       body: data instanceof FormData ? data : JSON.stringify(data),
     };
 
-    if (!(data instanceof FormData)) {
-      options.headers = {
-        "Content-Type": "application/json",
-      };
-    }
+    options.headers = data instanceof FormData
+    ? {}
+    : { "Content-Type": "application/json" };
+
+    const token = localStorage.getItem("token");
 
     if (token) {
       options.headers = {
@@ -39,7 +36,6 @@ export async function sendData(url, data, http) {
     const response = await fetch(import.meta.env.VITE_API_URL + url, options);
     return response;
   } catch (error) {
-    console.error("Error sending data:", error);
     return null;
   }
 }

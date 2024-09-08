@@ -36,8 +36,9 @@ function Score() {
                 {sortedUsers.map((sortedUser, index) => (
                   <tr
                     key={sortedUser.id}
+                    // The style is adjusted to highlight the authenticated user in the ranking
                     className={
-                      auth?.id === sortedUser.id && "total-ranking-auth"
+                      auth?.id === sortedUser.id ? "total-ranking-auth" : ""
                     }
                   >
                     <td>{index + 1}</td>

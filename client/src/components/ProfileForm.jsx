@@ -44,7 +44,11 @@ function ProfileForm({ user, auth, id, existingUsernames, existingEmails }) {
   return (
     <section className="profile-section-wrapper">
       <article className="profile-article">
-        <h1>
+        <h1
+          className={
+            auth?.id === parseInt(id, 10) ? "" : "profile-main-title-long"
+          }
+        >
           {auth?.id === parseInt(id)
             ? "MON PROFIL"
             : `PROFIL DE ${user.username.toUpperCase()}`}
@@ -105,22 +109,19 @@ function ProfileForm({ user, auth, id, existingUsernames, existingEmails }) {
   );
 }
 
-ProfileForm.defaultProps = {
-  user: {
-    id: 0,
-    username: "",
-    city: "",
-    email: "",
-  },
-};
-
 ProfileForm.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    username: PropTypes.string,
-    city: PropTypes.string,
-    email: PropTypes.string,
+    username: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
   }),
+  auth: PropTypes.shape({
+    id: PropTypes.number,
+  }),
+  id: PropTypes.string,
+  existingUsernames: PropTypes.arrayOf(PropTypes.string),
+  existingEmails: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default ProfileForm;

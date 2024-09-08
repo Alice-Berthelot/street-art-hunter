@@ -15,7 +15,7 @@ class Art_ArtistSeeder extends AbstractSeeder {
     const associations = [{}, {}, {}, {}, {}];
 
     associations.forEach((association, index) => {
-      const artRef = this.getRef(`art_fixed_${index}`);
+      const artRef = this.getRef(`art_${index}`);
       const artistRef = this.getRef(`artist_${index}`);
 
       const art_artist = {

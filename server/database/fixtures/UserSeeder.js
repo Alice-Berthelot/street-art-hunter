@@ -2,7 +2,7 @@ const AbstractSeeder = require("./AbstractSeeder");
 
 class UserSeeder extends AbstractSeeder {
   constructor() {
-    super({ table: "user", truncate: false });
+    super({ table: "user", truncate: true });
   }
 
   run() {
@@ -10,7 +10,7 @@ class UserSeeder extends AbstractSeeder {
       const fakeUser = {
         username: this.faker.internet.userName(),
         city: this.faker.location.city(),
-        email: this.faker.internet.email(),
+        email: this.faker.internet.email().toLowerCase(),
         hashed_password: this.faker.internet.password(),
         point_number: this.faker.number.int({ min: 0, max: 10 }) * 10,
         is_admin: i === 2 ? 1 : 0,

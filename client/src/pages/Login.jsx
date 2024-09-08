@@ -52,10 +52,7 @@ function Login() {
           </Link>
         </p>
       </Form>
-      <img
-        src={ImgLoginForm}
-        alt="oeuvre d'art représentant une femme sur un mur coloré"
-      />
+      <img src={ImgLoginForm} alt="oeuvre d'art représentant un renard" />
     </section>
   );
 }

@@ -51,8 +51,8 @@ function ValidationDetails() {
   return (
     <section className="validation-section-wrapper">
       <article className="validation-article">
-        <BtnGoBack />
         <AdminLinks />
+        <BtnGoBack />
         <section className="validation-details-section">
           <section className="validation-content">
             <h2>Proposition</h2>
@@ -86,6 +86,7 @@ function ValidationDetails() {
               )}
             </ul>
             <Form method="put" className="validation-form">
+              {/* Hidden inputs to send data with the HTTP request */}
               <input type="hidden" name="status" value={statusValue} />
               <input type="hidden" name="pointNumber" value={pointsValue} />
               <button type="submit" onClick={handleValidate}>

@@ -31,7 +31,7 @@ describe("GET /api/users/:id", () => {
     expect(response.body).toStrictEqual(rows[0]);
   });
 
-  it("should return 404 for non-existent item", async () => {
+  it("should return 404 for non-existent user", async () => {
     const rows = [];
 
     jest.spyOn(database, "query").mockImplementation(() => [rows]);

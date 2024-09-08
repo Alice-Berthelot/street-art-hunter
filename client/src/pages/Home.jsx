@@ -17,13 +17,14 @@ import Map from "../components/Map";
 function Home() {
   const artData = useLoaderData();
 
-  const { auth, setAuth } = useContext(CurrentUserContext);
+  const { setAuth } = useContext(CurrentUserContext);
   const [position, setPosition] = useState([
     44.831271602173324, -0.5722962522737938,
   ]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedArt, setSelectedArt] = useState(null);
 
+  // artIcon and geolocationIcon are custom markers created using React Leaflet's Icon class
   const artIcon = new Icon({
     iconUrl: yellowMarker,
     iconSize: [38, 38],
@@ -67,7 +68,7 @@ function Home() {
     if (showModal) {
       const timer = setTimeout(() => {
         setShowModal(false);
-      }, 8000);
+      }, 10000);
 
       return () => clearTimeout(timer);
     }

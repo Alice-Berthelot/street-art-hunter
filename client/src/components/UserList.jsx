@@ -1,7 +1,6 @@
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import BtnGoBack from "./BtnGoBack";
 import AdminLinks from "./AdminLinks";
 
 function UserList({ users }) {
@@ -26,7 +25,6 @@ function UserList({ users }) {
   return (
     <section className="user-list-info-section">
       <article className="artlist-article">
-        <BtnGoBack />
         <AdminLinks />
         <h2>Liste des utilisateurs</h2>
         <ul className="user-list-ul">
@@ -59,9 +57,9 @@ function UserList({ users }) {
           <tbody className="user-list-cells">
             {filteredtUsers.map((user) => (
               <tr key={user.id}>
-                <Link to={`/profile/${user.id}`}>
-                  <td className="user-list-tr">{user.username}</td>
-                </Link>
+                <td className="user-list-tr">
+                  <Link to={`/profile/${user.id}`}>{user.username} </Link>
+                </td>
                 <td className="user-list-tr">{user.city}</td>
               </tr>
             ))}
@@ -75,12 +73,12 @@ function UserList({ users }) {
 UserList.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       username: PropTypes.string.isRequired,
       point_number: PropTypes.number.isRequired,
       registration_date: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
 };
 
 export default UserList;

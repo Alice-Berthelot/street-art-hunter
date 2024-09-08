@@ -6,7 +6,7 @@ function AdminLinks() {
 
   return (
     <>
-      <h1>ADMINISTRATION</h1>
+      <h1 className="admin-main-title">ADMINISTRATION</h1>
       <nav
         className="admin-links-nav"
         aria-label="Lien vers les pages réservées aux administrateurs"
@@ -49,10 +49,5 @@ function AdminLinks() {
     </>
   );
 }
-
-AdminLinks.propTypes = {
-  classNameBody: PropTypes.string.isRequired,
-  classNameNav: PropTypes.string.isRequired,
-};
 
 export default AdminLinks;

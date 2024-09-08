@@ -68,7 +68,6 @@ const edit = async (req, res, next) => {
 };
 
 const destroy = async (req, res, next) => {
-  console.log("req.params.id", req.params.id)
   try {
     await tables.art.delete(req.params.id);
     res.sendStatus(204);

@@ -66,7 +66,6 @@ const router = createBrowserRouter([
             <Camera />
           </AuthProtectedCamera>
         ),
-
         action: async ({ request }) => {
           const formData = await request.formData();
           const imageSrc = formData.get("pictureTaken");

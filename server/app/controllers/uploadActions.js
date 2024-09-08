@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
@@ -30,7 +29,6 @@ const add = async (req, res, next) => {
       artRecord,
     });
   } catch (dbErr) {
-    console.error("Error saving to database:", dbErr);
     next(dbErr);
   }
 };

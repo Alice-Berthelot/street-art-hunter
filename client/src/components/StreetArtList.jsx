@@ -1,6 +1,5 @@
 import "../styles/AdminStreetArtPage.css";
 import PropTypes from "prop-types";
-import BtnGoBack from "./BtnGoBack";
 import AdminLinks from "./AdminLinks";
 import GalleryDetails from "./GalleryDetails";
 
@@ -20,7 +19,6 @@ function StreetArtList({
   return (
     <section className="artlist-section-wrapper">
       <article className="artlist-article">
-        <BtnGoBack />
         <AdminLinks />
         <h2>Oeuvres présentes sur l'application</h2>
         <ul className="gallery-list">
@@ -32,10 +30,7 @@ function StreetArtList({
                 handleOpenModal();
               }}
             >
-              <img
-                src={`${artUrl}/${art.image}`}
-                alt={`oeuvre d'art ${art.id}`}
-              />
+              <img src={`${artUrl}/${art.image}`} alt={`oeuvre d'art`} />
             </li>
           ))}
         </ul>
@@ -55,12 +50,32 @@ function StreetArtList({
 }
 
 StreetArtList.propTypes = {
-  pictures: PropTypes.arrayOf(
+  arts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
+  selectedArt: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+  }),
+  setSelectedArt: PropTypes.func,
+  isOpen: PropTypes.bool,
+  setIsOpen: PropTypes.func,
+  handleOpenModal: PropTypes.func,
+  handleCloseModal: PropTypes.func,
+  translations: PropTypes.shape({
+    pending: PropTypes.string.isRequired,
+    accepted: PropTypes.string.isRequired,
+    refused: PropTypes.string.isRequired,
+  }),
+  dateOptions: PropTypes.shape({
+    day: PropTypes.string.isRequired,
+    month: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+    timeZone: PropTypes.string.isRequired,
+  }),
 };
 
 export default StreetArtList;

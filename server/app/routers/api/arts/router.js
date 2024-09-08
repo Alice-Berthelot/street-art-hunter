@@ -13,7 +13,7 @@ const {
   destroy,
 } = require("../../../controllers/artActions");
 
-const { authorize } = require("../../../middlewares/authorize");
+const { authorizeAdmin } = require("../../../middlewares/authorizeAdmin");
 
 router.get("/", browse);
 router.get("/accepted", browseAccepted);
@@ -21,7 +21,7 @@ router.get("/comparedArts", browseComparedArts);
 router.get("/gallery", browseGallery);
 router.get("/count", count);
 router.get("/:id", read);
-router.put("/:id", authorize, edit);
-router.delete("/:id", authorize, destroy);
+router.put("/:id", authorizeAdmin, edit);
+router.delete("/:id", authorizeAdmin, destroy);
 
 module.exports = router;

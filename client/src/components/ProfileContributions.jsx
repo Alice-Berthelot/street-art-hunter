@@ -18,9 +18,11 @@ function ProfileContributions({
 
   return (
     <section className="profile-contributions-section">
+      {/* The profile titles and subtitles vary based on whether the authenticated user is the profile owner or an admin. */}
       <h2 className="profile-subtitle">
         {auth?.id === parseInt(id) ? "Mes contributions" : "Contributions"}
       </h2>
+      {/* Splide is a library used to create carousels */}
       <Splide
         options={{
           type: "slide",
@@ -47,7 +49,7 @@ function ProfileContributions({
             >
               <img
                 src={`${pictureUrl}/${art.image}`}
-                alt={`Street art`}
+                alt="oeuvre ajoutée"
                 className="profile-added-image"
               />
             </figure>
@@ -67,6 +69,11 @@ function ProfileContributions({
 }
 
 ProfileContributions.propTypes = {
+  auth: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    role: PropTypes.number.isRequired,
+  }),
+  id: PropTypes.string,
   arts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -75,12 +82,26 @@ ProfileContributions.propTypes = {
       artist: PropTypes.string,
       information: PropTypes.string,
     })
-  ).isRequired,
-  selectedArt: PropTypes.object,
-  setSelectedArt: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  handleOpenModal: PropTypes.func.isRequired,
-  handleCloseModal: PropTypes.func.isRequired,
+  ),
+  selectedArt: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    artist: PropTypes.string,
+    information: PropTypes.string,
+    status: PropTypes.string,
+    upload_date: PropTypes.string,
+    username: PropTypes.string,
+  }),
+  setSelectedArt: PropTypes.func,
+  isOpen: PropTypes.bool,
+  handleOpenModal: PropTypes.func,
+  handleCloseModal: PropTypes.func,
+  translations: PropTypes.shape({
+    pending: PropTypes.string.isRequired,
+    accepted: PropTypes.string.isRequired,
+    refused: PropTypes.string.isRequired,
+  }),
 };
 
 ProfileContributions.defaultProps = {

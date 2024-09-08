@@ -5,6 +5,7 @@ const path = require("path");
 class UserRepository extends AbstractRepository {
   constructor() {
     super({ table: "user" });
+    // Directory for user-uploaded images
     this.uploadDir = path.join(__dirname, "/../../public/assets/images/upload");
   }
 
@@ -43,7 +44,7 @@ class UserRepository extends AbstractRepository {
 
   async readTotalUsers() {
     const [rows] = await this.database.query(
-      `SELECT count(*) as totalUsers, sum(CASE WHEN registration_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN 1 ELSE 0 END) AS recentUsers FROM ${this.table}`
+      `SELECT count(*) as totalUsers, CAST(sum(CASE WHEN registration_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN 1 ELSE 0 END)AS UNSIGNED) AS recentUsers FROM ${this.table}`
     );
     return rows[0];
   }
@@ -75,43 +76,52 @@ class UserRepository extends AbstractRepository {
   async delete(userId) {
     await this.database.query("START TRANSACTION");
     try {
-
+      // Disable foreign key checks to avoid constraint errors
       await this.database.query("SET FOREIGN_KEY_CHECKS = 0");
 
+      // Delete associated art records
       await this.database.query(
         "DELETE a FROM picture as p JOIN art as a ON a.id = p.art_id WHERE p.user_id = ?",
         [userId]
       );
 
+      // Retrieve pictures associated with the user, so they can be deleted in the following steps
       const [pictures] = await this.database.query(
         "SELECT image FROM picture WHERE user_id = ?",
         [userId]
       );
 
+      // Delete all picture files uploaded by the user
       pictures.forEach((picture) => {
-          const filePath = path.join(this.uploadDir, picture.image);
-          if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
-          } else {
-            console.warn("Fichier non trouvé:", filePath);
-          }
+        const filePath = path.join(this.uploadDir, picture.image);
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+        } else {
+          console.warn("Fichier non trouvé:", filePath);
+        }
       });
 
+      // Delete associated picture records from the database
       await this.database.query("DELETE FROM picture WHERE user_id = ?", [
         userId,
       ]);
 
+      // Delete the user record
       const [result] = await this.database.query(
         `DELETE FROM ${this.table} WHERE id = ?`,
         [userId]
       );
 
+      // Re-enable foreign key checks
       await this.database.query("SET FOREIGN_KEY_CHECKS = 1");
 
+      // Validate the transaction
       await this.database.query("COMMIT");
       return result.affectedRows;
     } catch (error) {
+      // Cancel the transaction
       await this.database.query("ROLLBACK");
+      // Re-enable foreign key checks
       await this.database.query("SET FOREIGN_KEY_CHECKS = 1");
       throw error;
     }

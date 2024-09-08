@@ -5,21 +5,29 @@ import "../styles/Profile.css";
 function ProfileInfo({ user, auth, id }) {
   return (
     <section className="profile-information-section">
+      {/* The profile titles and subtitles vary based on whether the authenticated user is the profile owner or an admin. */}
       <h2 className="profile-subtitle">
         {auth?.id === parseInt(id, 10) ? "Mes informations" : "Informations"}
       </h2>
-      <article className="profile-information-article">
-        <p>Pseudo</p>
-        <p>{user.username}</p>
-        <p>Ville</p>
-        <p>{user.city}</p>
-        <p>E-mail</p>
-        <p>{user.email}</p>
-      </article>
+      <table className="profile-information-table">
+        <tbody>
+          <tr>
+            <td>Pseudo</td>
+            <td>{user.username}</td>
+          </tr>
+          <tr>
+            <td>Ville</td>
+            <td>{user.city}</td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td>{user.email}</td>
+          </tr>
+        </tbody>
+      </table>
 
       <Link
         to={`/profile/${user.id}/edit`}
-        aria-label="Informations"
         className="profile-information-edit-button"
       >
         Modifier

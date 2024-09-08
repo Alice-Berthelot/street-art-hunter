@@ -24,13 +24,9 @@
 .validation-article {
   width: 98%;
   background-color: var(--fourth-color);
-  margin-top: 3.2rem;
+  margin-top: 3.5rem;
   border: 1px solid var(--fifth-color);
   border-radius: 0.8125rem;
-}
-
-.validation-article > h1 {
-  width: 100%;
 }
 
 .validation-article h2,
@@ -188,6 +184,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 10rem;
   }
 
   .validation-details-section {

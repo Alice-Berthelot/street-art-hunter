@@ -147,10 +147,7 @@ function Register() {
           </Link>
         </p>
       </Form>
-      <img
-        src={ImgRegisterForm}
-        alt="oeuvre d'art représentant une femme sur un mur coloré"
-      />
+      <img src={ImgRegisterForm} alt="oeuvre d'art représentant un gorille" />
     </section>
   );
 }
