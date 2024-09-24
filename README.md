@@ -1,4 +1,4 @@
-<img src="client\src\assets\images\logo.png" alt="logo street art hunter"/>
+<img src="client\src\assets\images\logoblue.png" alt="logo street art hunter"/>
 <h1>Street Art Hunter</h1>
 
 <p>Work in progress (v2-modifications branch) - Improvement of the final group project with the Wild Code School (previously called "PixHunt")</p>
