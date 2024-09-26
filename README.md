@@ -1,11 +1,87 @@
-<img src="client\src\assets\images\logoblue.png" alt="logo street art hunter"/>
-<h1>Street Art Hunter</h1>
+<p align="center">
+  <img src="client/src/assets/images/logoblue.png" alt="logo street art hunter" width="30%"/>
+</p>
 
-<p>Work in progress (v2-modifications branch) - Improvement of the final group project with the Wild Code School (previously called "PixHunt")</p>
+## ⚡ Introduction
 
-**WILD CODE SCHOOL INSTRUCTIONS**
+<br/>
 
-# streetarthunter
+_**Street Art Hunter** is the final group project I participated in during my training at the Wild Code School. I made several modifications to this project in order to present it for my **Professional Certification**, which was successful._
+
+**Concept:** full-stack web app that allows users to discover street art pieces around them on a map. Different types of users (visitors, registered users, admins). Registered users can upload pictures directly from the app using a camera. If their submissions are validated by admins, they can earn points.
+
+**Requirements:** the school required us to develop a full-stack app which involved creating a RESTful API, implementing a database, and developing CRUD operations. Before that, we had to define the CDM/LDM/PDM, write user stories, and design wireframes and mockups.
+
+**Language:** 🇫🇷
+
+<br/>
+
+## 🚀 Achievements 
+
+<br/>
+
+**My completed tasks:** 
+- implemented browsing of art pieces on the map ;
+- enabled viewing the details of the art pieces selected by the user ;
+- developed the entire score page ;
+- developed the entitre profile page, with associated functionalities (edit information, delete profile and all related user content, change appearance based on user role, etc.) ;
+- developed most of the admin pages and closely guided the person in charge of the others ;
+- developed login and logout functionalities (for example, manually configured the use of tokens stored in the localStorage) ;
+- built the database and its seeders ;
+- implemented CRUD functionalities to link data between server and client ;
+- used Express Static to serve images stored on the server to be displayed in the app ;
+- used the Node.js filesystem module to delete image files stored on the server ;
+- implemented protected routes in React ;
+- developed middlewares to ensure server-side secure access to profile and admin features ;
+- wrote basic unitary tests.
+
+**Priority areas for improvement:** strengthen the security (for example: implementing xsrf tokens), introduce new functionalities (allowing users to delete only parts of their content, comparing existing art pieces, and creating itineraries), add legal mentions, and increasing the number of tests.
+
+<br/>
+
+## 🔧 Technologies and tools
+
+<br/>
+
+<p align="left"> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/></a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/></a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/></a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/></a></p>
+<p align="left"><a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/></a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/></a> <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/></a> <a href="https://documentation-harmonia.vercel.app/" target="_blank" rel="noreferrer"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHzh1jbRrlTQ8Ez75ttwqXcCQdCHnukGFxMg&s" alt="harmonia" width="40" height="40"/></a></p>
+<p align="left"><a href="https://jestjs.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> </a></p>
+<p align="left"><a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/></a> <a href="https://excalidraw.com/" target="_blank" rel="noreferrer"> <img src="https://refer-production.s3.us-east-2.amazonaws.com/favicon/excalidraw.com/04e9e487-b1b4-4217-ac2f-7c2129fed8ce.jpg" alt="excalidraw" width="40" height="40"/></a></p>
+
+<p>Other tools:
+<ul>
+  <li><b>Fetch</b>: JavaScript interface for making data requests to a server;</li>
+  <li><b>Argon2</b>: algorithm for password hashing;</li>
+  <li><b>JWT</b>: open standard to generate secure connection tokens;</li>
+  <li><b>React-Leaflet</b>: JavaScript library for creating interactive maps;</li>
+  <li><b>React Webcam</b>: ReactJS library for uploading pictures or videos using the user's camera;</li>
+  <li><b>React Icons</b>: ReactJS library for icons;</li>
+  <li><b>React Toastify</b>: ReactJS library for notifications;</li>
+  <li><b>Faker</b>: JavaScript library generating fictitious and realistic data;</li>
+   <li><b>Multer</b>: Node.js middleware for handling and storing multimedia files sent through forms;</li>
+  <li><b>Splide</b>: library for creating sliders.</li>
+  <li><b>Supertest</b>: Node.js library for tests.</li>
+</ul></p>
+
+<br/>
+
+## ⭐ Final overview
+
+<br/>
+
+_Deployment coming soon!_
+
+<br/>
+
+<p align="center">
+  <img src="client/src/assets/images/logo-small.png" alt="mobile version logo" width="5%"/>
+</p>
+
+<br/>
+<br/>
+<br/>
+
+## WILD CODE SCHOOL INSTRUCTIONS
 
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
 It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
