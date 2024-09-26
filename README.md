@@ -69,6 +69,8 @@ _**Street Art Hunter** is the final group project I participated in during my tr
 
 <br/>
 
+<a href="https://youtu.be/w0mWJQF-Fl4" target="blank">Check out how it looks</a>
+
 _Deployment coming soon!_
 
 <br/>
