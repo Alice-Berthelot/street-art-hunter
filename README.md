@@ -59,7 +59,7 @@ _**Street Art Hunter** is the final group project I participated in during my tr
   <li><b>React Toastify</b>: ReactJS library for notifications;</li>
   <li><b>Faker</b>: JavaScript library generating fictitious and realistic data;</li>
    <li><b>Multer</b>: Node.js middleware for handling and storing multimedia files sent through forms;</li>
-  <li><b>Splide</b>: library for creating sliders.</li>
+  <li><b>Splide</b>: library for creating sliders ;</li>
   <li><b>Supertest</b>: Node.js library for tests.</li>
 </ul></p>
 
@@ -74,7 +74,7 @@ _Deployment coming soon!_
 <br/>
 
 <p align="center">
-  <img src="client/src/assets/images/logo-small.png" alt="mobile version logo" width="5%"/>
+  <img src="client/src/assets/images/logo-small.png" alt="mobile version logo" width="10%"/>
 </p>
 
 <br/>
