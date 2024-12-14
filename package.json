@@ -16,6 +16,7 @@
     "server"
   ],
   "scripts": {
+    "build": "npm run build --workspaces",
     "start": "npm run build && node server/index.js",
     "postinstall": "node -e \"if (process.env.NODE_ENV === 'production'){process.exit(1)} \" || husky install",
     "db:migrate": "npm run db:migrate --workspace=server",
