@@ -16,6 +16,7 @@
     "server"
   ],
   "scripts": {
+    "start": "npm run build && node server/index.js",
     "postinstall": "node -e \"if (process.env.NODE_ENV === 'production'){process.exit(1)} \" || husky install",
     "db:migrate": "npm run db:migrate --workspace=server",
     "db:seed": "npm run db:seed --workspace=server",
@@ -37,5 +38,8 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "validate-branch-name": "^1.3.0"
+  },
+  "dependencies": {
+    "cross-spawn": "^7.0.6"
   }
 }
