@@ -1,0 +1,38 @@
+.desktop-bar-section {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-bar-section {
+    display: block;
+    background-color: var(--secondary-color);
+    width: 17rem;
+    min-height: 100vh;
+    padding-top: 6rem;
+  }
+
+  .admin-links-bar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .admin-links-bar {
+    width: auto;
+    height: auto;
+    color: var(--fourth-color);
+    font-size: 1.3rem;
+    font-weight: 400;
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .admin-links-bar-active {
+    font-size: 1.3rem;
+    font-weight: 400;
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+}

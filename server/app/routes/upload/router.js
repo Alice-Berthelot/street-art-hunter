@@ -1,0 +1,15 @@
+const express = require("express");
+
+const multer = require("multer");
+
+const upload = multer({ dest: "public/assets/images/upload/" });
+
+const router = express.Router();
+
+const { handleFileUpload } = require("../../middlewares/verifyUpload");
+
+const uploadActions = require("../../controllers/uploadController");
+
+router.post("/", upload.single("file"), handleFileUpload, uploadActions.add);
+
+module.exports = router;

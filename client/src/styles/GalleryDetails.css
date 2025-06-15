@@ -1,0 +1,96 @@
+.modal-gallery {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 35rem;
+  background-color: var(--fourth-color);
+  border: 2.5px solid var(--fifth-color);
+  border-radius: 0.9375rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  overflow: scroll;
+  scrollbar-color: var(--third-color) var(--third-color);
+  z-index: 3;
+}
+
+.modal-gallery::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-gallery > header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-modal-gallery {
+  font-family: var(--primary-font);
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  background-color: transparent;
+  border: none;
+  padding-right: 1rem;
+  margin: 1rem 0;
+}
+
+.close-modal-gallery:hover {
+  color: var(--third-color);
+  cursor: pointer;
+}
+
+.modal-content-gallery {
+  text-align: center;
+}
+
+.modal-content-gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
+  color: var(--secondary-color);
+}
+
+.modal-content-gallery p:first-of-type {
+  background-color: var(--secondary-color);
+  color: var(--third-color);
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+}
+
+.modal-content-gallery p:last-of-type {
+  align-self: flex-start;
+  padding: 0 1rem;
+}
+
+.confirm-delete-gallery {
+  width: 12rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.65rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 2rem auto;
+}
+
+.confirm-delete-gallery:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  letter-spacing: 0.1rem;
+}
+
+@media (min-width: 768px) {
+  .modal-gallery {
+    width: 60%;
+  }
+}

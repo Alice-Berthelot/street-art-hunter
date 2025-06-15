@@ -1,0 +1,64 @@
+:root {
+  --primary-color: #ffd44c;
+  --secondary-color: #00034d;
+  --third-color: #f165d2;
+  --fourth-color: #f4f4f4;
+  --fifth-color: #252323;
+  --toastify-color-success: #f165d2;
+  --primary-font: "Sedgwick Ave display", sans-serif;
+  --secondary-font: "Atkinson Hyperlegible", sans-serif;
+  --toastify-font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--secondary-font);
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--fourth-color);
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  color: var(--secondary-color);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  background-image: url("../assets/images/paint-trace.png");
+  background-position: left center;
+  background-size: 5rem 5rem;
+  background-repeat: no-repeat;
+  padding: 3rem 2.5rem;
+  width: 20rem;
+  margin: auto;
+}
+
+.Toastify__toast {
+  border-radius: 10px;
+  text-decoration: none;
+  top: 3rem;
+}
+
+.Toastify__toast--success {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-color: var(--third-color);
+}
+
+.Toastify__close-button {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.Toastify__close-button:hover {
+  color: var(--third-color);
+}

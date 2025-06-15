@@ -1,0 +1,22 @@
+.logo-mobile {
+  position: absolute;
+  top: 0.5%;
+  left: 3%;
+  width: 4.5rem;
+  z-index: 3;
+}
+
+.logout-icon {
+  position: absolute;
+  top: 0.2%;
+  right: 3%;
+  width: 3rem;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .logo-mobile,
+  .logout-icon {
+    display: none;
+  }
+}

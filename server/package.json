@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --ignore ./database/fixtures index.js",
+    "db:migrate": "node ./bin/migrate.js",
+    "db:seed": "node ./bin/seed.js",
+    "build": "node --max-old-space-size=4096 ./bin/migrate.js",
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "Alice Berthelot",
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "mysql2": "^3.14.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.5",
+    "jest": "^30.0.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
+    "supertest": "^7.1.1"
+  }
+}
