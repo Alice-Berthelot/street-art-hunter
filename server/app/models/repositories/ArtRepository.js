@@ -6,7 +6,7 @@ class ArtRepository extends AbstractRepository {
   constructor() {
     super({ table: "art" });
     // Directory for user-uploaded images
-    this.uploadDir = path.join(__dirname, "/../../public/assets/images/upload");
+    this.uploadDir = path.join(__dirname, "/../../../public/assets/images/upload");
   }
 
   async readAll() {
