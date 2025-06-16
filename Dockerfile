@@ -2,22 +2,17 @@ FROM node:20
 
 WORKDIR /app
 
-# Install client dependencies
-COPY client ./client
-RUN cd client && npm install && npm run build
+COPY package*.json ./
+RUN npm install --production
 
-# Install server dependencies
-COPY server/package*.json ./server/
-RUN cd server && npm install --production
-
-# Copy all code
 COPY . .
 
-# Move React build to the server public file
-RUN rm -rf server/public && \
-    cp -r client/dist server/public
+WORKDIR /app/client
+RUN npm install
+RUN npm run build
 
-# Run server
+RUN cp -r dist/* ../server/public/
+
 WORKDIR /app/server
 
 EXPOSE 8080
