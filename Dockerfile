@@ -2,13 +2,15 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install --production
+COPY server/package*.json ./server/
+RUN cd server && npm install --production
+
+COPY client/package*.json ./client/
+RUN cd client && npm install
 
 COPY . .
 
 WORKDIR /app/client
-RUN npm install
 RUN npm run build
 
 RUN cp -r dist/* ../server/public/
