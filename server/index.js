@@ -6,8 +6,8 @@ const database = require('./database/db');
 
 database.checkConnection();
 
-const PORT = process.env.APP_PORT || 3000;
-app.set('port', PORT || 3000);
+const PORT = process.env.APP_PORT || 8080;
+app.set('port', PORT);
 
 const server = http.createServer(app);
 
