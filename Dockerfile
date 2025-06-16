@@ -4,11 +4,11 @@ WORKDIR /app
 
 # Install client dependencies
 COPY client/package*.json ./client/
-RUN cd apps/client && npm install && npm run build
+RUN cd client && npm install && npm run build
 
 # Install server dependencies
 COPY server/package*.json ./server/
-RUN cd apps/server && npm install --production
+RUN cd server && npm install --production
 
 # Copy all code
 COPY . .
