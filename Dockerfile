@@ -3,7 +3,7 @@ FROM node:20
 WORKDIR /app
 
 # Install client dependencies
-COPY client/package*.json ./client/
+COPY client ./client
 RUN cd client && npm install && npm run build
 
 # Install server dependencies
