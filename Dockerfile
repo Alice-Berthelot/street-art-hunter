@@ -1,21 +1,22 @@
 FROM node:20
 
-WORKDIR /app/client
+WORKDIR /app
 
-COPY client/package*.json ./
-RUN npm install
+COPY server/package*.json ./server/
+RUN cd server && npm install --production
 
-COPY client/ .
-
-RUN npm run build
-
-WORKDIR /app/server
-
-COPY package*.json ./
-RUN npm install --production
+COPY client/package*.json ./client/
+RUN cd client && npm install
 
 COPY . .
 
+WORKDIR /app/client
+RUN npm run build
+
+RUN cp -r dist/* ../server/public/
+
+WORKDIR /app/server
+
 EXPOSE 8080
 
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
